@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class Consumable : MonoBehaviour
 {
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.layer == LayerMask.NameToLayer("consumable"))
