@@ -2688,6 +2688,9 @@ MonoBehaviour:
   descriptionText: {fileID: 6216373772232477995}
   completionSlider: {fileID: 7910297262606683396}
   questManager: {fileID: 8196769435937949614}
+  MinValue: 0
+  MaxValue: 0
+  CurrValue: 0
 --- !u!114 &9150005157064969377
 MonoBehaviour:
   m_ObjectHideFlags: 0

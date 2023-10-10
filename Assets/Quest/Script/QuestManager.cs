@@ -5,6 +5,8 @@ using TMPro;
 
 public class QuestManager : MonoBehaviour
 {
+    private int currentQuestIndex; // Variable to store the current quest index
+
     public List<Quest> quests;
     public List<Image> questImages;
     public QuestDetailsOverlay questDetailsOverlay; // Reference to the QuestDetailsOverlay script
@@ -12,6 +14,28 @@ public class QuestManager : MonoBehaviour
     void Start()
     {
         AssignRandomQuests();
+    }
+
+    private void Update()
+    {
+        if (questDetailsOverlay.completionSlider.value == questDetailsOverlay.completionSlider.maxValue)
+        {
+            // If enough materials then complete the quest and reload now one, reset slider
+            if (questDetailsOverlay.ItemCount >= 1)
+            {
+                Debug.Log("Completed");
+                questDetailsOverlay.ItemCount--;
+                CompleteQuest(currentQuestIndex); // Get quest index reference
+                questDetailsOverlay.HideQuestDetails();
+                questDetailsOverlay.completionSlider.value = 0;
+            }
+            // Else if not enough material, text appear showing not enough material and slider goes back to 0
+            else if(questDetailsOverlay.ItemCount < 1)
+            {
+                Debug.Log("Not Complete");
+                questDetailsOverlay.completionSlider.value = 0;
+            }
+        }
     }
 
     void AssignRandomQuests()
@@ -33,17 +57,7 @@ public class QuestManager : MonoBehaviour
 
     void ShuffleQuests()
     {
-        int questCount = quests.Count;
-        for (int i = 0; i < questCount - 1; i++)
-        {
-            // Generate a random index between i and questCount - 1
-            int randomIndex = Random.Range(i, questCount);
-
-            // Swap quests[i] and quests[randomIndex]
-            Quest temp = quests[i];
-            quests[i] = quests[randomIndex];
-            quests[randomIndex] = temp;
-        }
+        // Shuffle your quests as before
     }
 
     public void CompleteQuest(int questIndex)
@@ -67,6 +81,7 @@ public class QuestManager : MonoBehaviour
     {
         if (questIndex >= 0 && questIndex < quests.Count)
         {
+            currentQuestIndex = questIndex; // Store the current quest index
             string selectedQuestTitle = quests[questIndex].questDescription;
             string selectedQuestDescription = quests[questIndex].description;
             questDetailsOverlay.ShowQuestDetails(selectedQuestTitle, selectedQuestDescription);
