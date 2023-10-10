@@ -12,10 +12,15 @@ public class PlayerMove : MonoBehaviour
     private Vector2 endPos;
     [SerializeField] public GameObject raycastOBJ;
 
+    private int tileNo;
 
+    Vector2 rcPos;
     private void Start()
     {
-        tilemap = GameObject.FindGameObjectWithTag("GroundTile").GetComponent<Tilemap>();
+        tileNo = 0;
+        rcPos = raycastOBJ.transform.position;
+        //tilemap = GameObject.FindGameObjectWithTag("GroundTile").GetComponent<Tilemap>();
+
     }
     // Update is called once per frame
     void Update()
@@ -110,11 +115,13 @@ public class PlayerMove : MonoBehaviour
         Vector3Int temp = tilemap.WorldToCell(nextPos);
         if (tilemap.HasTile(temp))
         {
+            Debug.Log("Hi");
             oldPosition.x += -0.5f;
             oldPosition.y += -0.25f;
         }
         else
         {
+            Debug.Log("asd");
 
         }
     }
@@ -125,11 +132,14 @@ public class PlayerMove : MonoBehaviour
         Vector3Int temp = tilemap.WorldToCell(nextPos);
         if (tilemap.HasTile(temp))
         {
+            Debug.Log("Hi");
             oldPosition.x += 0.5f;
             oldPosition.y += 0.25f;
         }
         else
         {
+            Debug.Log("asd");
+
         }
     }
 
@@ -139,11 +149,14 @@ public class PlayerMove : MonoBehaviour
         Vector3Int temp = tilemap.WorldToCell(nextPos);
         if (tilemap.HasTile(temp))
         {
+            Debug.Log("Hi");
             oldPosition.x += -0.5f;
             oldPosition.y += 0.25f;
         }
         else
         {
+            Debug.Log("asd");
+
         }
     }
 
@@ -153,11 +166,14 @@ public class PlayerMove : MonoBehaviour
         Vector3Int temp = tilemap.WorldToCell(nextPos);
         if (tilemap.HasTile(temp))
         {
+            Debug.Log("Hi");
             oldPosition.x += 0.5f;
             oldPosition.y += -0.25f;
         }
         else
         {
+            Debug.Log("asd");
+
         };
     }
 }
