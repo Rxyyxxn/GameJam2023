@@ -68,4 +68,17 @@ public class InventorySystem : MonoBehaviour
             }
         }
     }
+
+    public int ItemCount(string ItemName)
+    {
+        for (int i = 0; i < inventory.Count; i++)
+        {
+            if (inventory[i].data.displayName == ItemName)
+            {
+                return inventory[i].stackSize;
+            }
+        }
+
+        return 0;
+    }
 }

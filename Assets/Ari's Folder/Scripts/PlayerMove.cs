@@ -12,6 +12,8 @@ public class PlayerMove : MonoBehaviour
     private Vector2 endPos;
     [SerializeField] public GameObject raycastOBJ;
 
+    private CollisionDetection collisionDetection;
+
     private void Start()
     {
         tilemap = GameObject.FindGameObjectWithTag("GroundTile").GetComponent<Tilemap>();
@@ -25,13 +27,15 @@ public class PlayerMove : MonoBehaviour
         {
             if (invUI.activeSelf)
             {
-                for (int i = 0; i < InventorySystem.current.inventory.Count; i++)
-                {
-                    if (InventorySystem.current.inventory[i].data.displayName == "Carrot0")
-                    {
-                        InventorySystem.current.Remove(InventorySystem.current.inventory[i].data);
-                    }
-                }
+                //for (int i = 0; i < InventorySystem.current.inventory.Count; i++)
+                //{
+                //    if (InventorySystem.current.inventory[i].data.displayName == "Carrot0")
+                //    {
+                //        InventorySystem.current.Remove(InventorySystem.current.inventory[i].data);
+                //    }
+                //}
+
+                Debug.Log(InventorySystem.current.ItemCount("Carrot0"));
             }
         }
 
@@ -168,7 +172,6 @@ public class PlayerMove : MonoBehaviour
         else
         {
             Debug.Log("asd");
-
         };
     }
 }

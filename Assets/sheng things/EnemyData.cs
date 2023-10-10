@@ -1,15 +1,22 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Tilemaps;
 
 public class EnemyData : MonoBehaviour
 {
+    private EnemyManager em;
+
     public int EnemyHP;
     public int EnemyAtk;
     public int EnemyTile;
 
     private EnemyState enemyState;
     private Direction enemyDirection;
+
+    public Tilemap tmap;
+
+    public Vector3Int enemyVec3;
 
     enum Direction
     {
@@ -31,11 +38,19 @@ public class EnemyData : MonoBehaviour
     {
         enemyState = EnemyState.Idle;
         enemyDirection = Direction.Up;
+        enemyVec3 = tmap.WorldToCell(transform.position);
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (EnemyHP <= 0)
+        {
+            Death();
+        }
+
+        enemyVec3 = tmap.WorldToCell(transform.position);
+
         switch (enemyState)
         {
             case EnemyState.Idle:
@@ -63,5 +78,10 @@ public class EnemyData : MonoBehaviour
             default:
                 break;
         }
+    }
+
+    void Death()
+    {
+        Destroy(gameObject);
     }
 }
