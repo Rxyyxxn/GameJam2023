@@ -19,11 +19,13 @@ public class PlayerMove : MonoBehaviour
     {
         tileNo = 0;
         rcPos = raycastOBJ.transform.position;
-        tilemap = GetComponent<Tilemap>();
+        //tilemap = GameObject.FindGameObjectWithTag("GroundTile").GetComponent<Tilemap>();
+
     }
     // Update is called once per frame
     void Update()
     {
+
         if (Input.GetKeyDown(KeyCode.G))
         {
             if (invUI.activeSelf)

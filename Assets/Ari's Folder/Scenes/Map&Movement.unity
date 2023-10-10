@@ -123,12 +123,6 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!1 &10046003 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 743727257338232584, guid: 5bf4373cfe47a3f43ab3fa02fe9254c9,
-    type: 3}
-  m_PrefabInstance: {fileID: 9116721297085488580}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &384306376
 GameObject:
   m_ObjectHideFlags: 0
@@ -893,7 +887,7 @@ Tilemap:
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Origin: {x: -9, y: -24, z: 0}
   m_Size: {x: 28, y: 31, z: 1}
-  m_TileAnchor: {x: 0, y: 0, z: 0}
+  m_TileAnchor: {x: -0.5, y: -0.5, z: 0}
   m_TileOrientation: 0
   m_TileOrientationMatrix:
     e00: 1
@@ -18947,11 +18941,6 @@ PrefabInstance:
       propertyPath: tilemap
       value: 
       objectReference: {fileID: 1993987385}
-    - target: {fileID: 2939500745286456317, guid: 5bf4373cfe47a3f43ab3fa02fe9254c9,
-        type: 3}
-      propertyPath: raycastOBJ
-      value: 
-      objectReference: {fileID: 10046003}
     - target: {fileID: 5709411976848533807, guid: 5bf4373cfe47a3f43ab3fa02fe9254c9,
         type: 3}
       propertyPath: m_LocalPosition.x

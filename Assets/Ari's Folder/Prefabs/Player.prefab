@@ -131,7 +131,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9dc795978eb94a248a616fa88f07fbfe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  raycastOBJ: {fileID: 0}
+  tilemap: {fileID: 0}
+  invUI: {fileID: 0}
+  raycastOBJ: {fileID: 743727257338232584}
 --- !u!70 &5769809675636775723
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
