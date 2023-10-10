@@ -5,7 +5,6 @@ using UnityEngine.Tilemaps;
 
 public class EnemyData : MonoBehaviour
 {
-    private EnemyManager em;
 
     public int EnemyHP;
     public int EnemyAtk;
@@ -50,6 +49,8 @@ public class EnemyData : MonoBehaviour
         }
 
         enemyVec3 = tmap.WorldToCell(transform.position);
+
+        Debug.Log(enemyVec3);
 
         switch (enemyState)
         {

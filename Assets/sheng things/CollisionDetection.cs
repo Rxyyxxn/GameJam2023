@@ -12,6 +12,14 @@ public class CollisionDetection : MonoBehaviour
             other.gameObject.GetComponent<ItemObject>().OnHandlePickupItem();
         }
 
+        //if (other.gameObject.CompareTag("enemy"))
+        //{
+        //    other.gameObject.GetComponent<EnemyData>().EnemyHP--;
+        //}
+    }
+
+    private void OnTriggerStay2D(Collider2D other)
+    {
         if (other.gameObject.CompareTag("enemy"))
         {
             other.gameObject.GetComponent<EnemyData>().EnemyHP--;

@@ -9,9 +9,11 @@ public class EnemyManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        for (int i = 0; i < all_enemyData.Length; i++)
-        {
-            Debug.Log(all_enemyData[i].enemyVec3);
-        }
+        all_enemyData = FindObjectsOfType<EnemyData>();
+
+        //for (int i = 0; i < all_enemyData.Length; i++)
+        //{
+        //    Debug.Log(all_enemyData[i]);
+        //}
     }
 }

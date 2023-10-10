@@ -12,7 +12,7 @@ public class PlayerMove : MonoBehaviour
     private Vector2 endPos;
     [SerializeField] public GameObject raycastOBJ;
 
-    private CollisionDetection collisionDetection;
+    public EnemyManager em;
 
     private void Start()
     {
@@ -22,6 +22,8 @@ public class PlayerMove : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        Vector3Int pos = tilemap.WorldToCell(transform.position);
+        Debug.Log(pos);
 
         if (Input.GetKeyDown(KeyCode.G))
         {
@@ -112,6 +114,16 @@ public class PlayerMove : MonoBehaviour
         Vector2 nextPos = new Vector2(oldPosition.x - 0.5f, oldPosition.y - 0.25f);
 
         Vector3Int temp = tilemap.WorldToCell(nextPos);
+
+        for (int i = 0; i < em.all_enemyData.Length; i++)
+        {
+            if (em.all_enemyData[i].enemyVec3 == temp)
+            {
+                em.all_enemyData[i].EnemyHP--;
+                return;
+            }
+        }
+
         if (tilemap.HasTile(temp))
         {
             Debug.Log("Hi");

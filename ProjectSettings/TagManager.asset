@@ -6,6 +6,7 @@ TagManager:
   tags:
   - consumable
   - GroundTile
+  - enemy
   layers:
   - Default
   - TransparentFX
