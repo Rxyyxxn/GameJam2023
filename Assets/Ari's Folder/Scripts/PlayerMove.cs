@@ -12,14 +12,9 @@ public class PlayerMove : MonoBehaviour
     private Vector2 endPos;
     [SerializeField] public GameObject raycastOBJ;
 
-    private int tileNo;
-
-    Vector2 rcPos;
     private void Start()
     {
-        tileNo = 0;
-        rcPos = raycastOBJ.transform.position;
-        //tilemap = GameObject.FindGameObjectWithTag("GroundTile").GetComponent<Tilemap>();
+        tilemap = GameObject.FindGameObjectWithTag("GroundTile").GetComponent<Tilemap>();
 
     }
     // Update is called once per frame
