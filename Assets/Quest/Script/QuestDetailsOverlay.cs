@@ -14,7 +14,7 @@ public class QuestDetailsOverlay : MonoBehaviour,IPointerUpHandler, IPointerDown
 
     private bool isPointerDown=false;
 
-    public int ItemCount = 100;
+    public int ItemCount = 1;
 
     private void Start()
     {
@@ -23,9 +23,7 @@ public class QuestDetailsOverlay : MonoBehaviour,IPointerUpHandler, IPointerDown
     }
 
     void Update()
-    {
-        Debug.Log(ItemCount);
-        
+    {    
         // Check if the pointer is down and the slider is not at the maximum value
         if (isPointerDown == false && completionSlider.value < completionSlider.maxValue)
         {

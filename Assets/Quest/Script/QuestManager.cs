@@ -2,6 +2,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using System.Collections.Generic;
 using TMPro;
+using System.Collections;
 
 public class QuestManager : MonoBehaviour
 {
@@ -10,31 +11,48 @@ public class QuestManager : MonoBehaviour
     public List<Quest> quests;
     public List<Image> questImages;
     public QuestDetailsOverlay questDetailsOverlay; // Reference to the QuestDetailsOverlay script
-
+    public GameObject ItemText;
+    float timer;
+    bool itemactive = false;
+    int count;
     void Start()
     {
+        ItemText.SetActive(false);
         AssignRandomQuests();
     }
 
     private void Update()
     {
+        Debug.Log(timer);
         if (questDetailsOverlay.completionSlider.value == questDetailsOverlay.completionSlider.maxValue)
         {
             // If enough materials then complete the quest and reload now one, reset slider
             if (questDetailsOverlay.ItemCount >= 1)
             {
-                Debug.Log("Completed");
                 questDetailsOverlay.ItemCount--;
-                CompleteQuest(currentQuestIndex); // Get quest index reference
+
                 questDetailsOverlay.HideQuestDetails();
+                CompleteQuest(currentQuestIndex); // Get quest index reference
                 questDetailsOverlay.completionSlider.value = 0;
             }
             // Else if not enough material, text appear showing not enough material and slider goes back to 0
-            else if(questDetailsOverlay.ItemCount < 1)
+            else if(questDetailsOverlay.ItemCount < 1/* && count. quests[currentQuestIndex].requiredItems<*/)
             {
-                Debug.Log("Not Complete");
-                questDetailsOverlay.completionSlider.value = 0;
+                ItemText.SetActive(true);
+                itemactive = true;
+                questDetailsOverlay.completionSlider.value = 0;       
             }
+        }
+
+        if (itemactive == true && timer <= 1.5)
+        {
+            timer += Time.deltaTime;
+        }
+        else
+        {
+            ItemText.SetActive(false);
+            itemactive = false;
+            timer = 0;
         }
     }
 
