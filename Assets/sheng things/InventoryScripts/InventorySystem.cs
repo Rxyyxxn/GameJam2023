@@ -4,17 +4,21 @@ using UnityEngine;
 
 public class InventorySystem : MonoBehaviour
 {
+    public Transform InventoryBar;
+
     private Dictionary<InventoryItemData, InventoryItem> m_itemDictionary;
     public List<InventoryItem> inventory { get; set; }
 
+    public delegate void onInventoryChangedEvent();
+    public onInventoryChangedEvent OnInvChange;
     public static InventorySystem current;
 
     private void Update()
     {
-        for (int i = 0; i < inventory.Count; i++)
-        {
-            Debug.Log(inventory[i].data.displayName + " " + inventory[i].stackSize);
-        }
+        //for (int i = 0; i < inventory.Count; i++)
+        //{
+        //    Debug.Log(inventory[i].data.displayName + " " + inventory[i].stackSize);
+        //}
     }
 
     private void Awake()
@@ -38,12 +42,14 @@ public class InventorySystem : MonoBehaviour
         if (m_itemDictionary.TryGetValue(refData, out InventoryItem value))
         {
             value.AddToStack();
+            OnInvChange();
         }
         else
         { 
             InventoryItem newItem = new InventoryItem(refData);
             inventory.Add(newItem);
             m_itemDictionary.Add(refData, newItem);
+            OnInvChange();
         }
     }
 
@@ -52,11 +58,13 @@ public class InventorySystem : MonoBehaviour
         if (m_itemDictionary.TryGetValue(refData, out InventoryItem value))
         {
             value.RemoveFromStack();
+            OnInvChange();
 
             if (value.stackSize == 0)
             {
                 inventory.Remove(value);
                 m_itemDictionary.Remove(refData);
+                OnInvChange();
             }
         }
     }
