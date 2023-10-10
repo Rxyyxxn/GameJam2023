@@ -1,21 +1,55 @@
 using UnityEngine;
+using UnityEngine.Tilemaps;
 
 public class PlayerMove : MonoBehaviour
 {
+    public Tilemap tilemap;
+    public GameObject invUI;
     //PC
     private Vector2 oldPosition;
     //Mobile
     private Vector2 startPos;
     private Vector2 endPos;
+    [SerializeField] public GameObject raycastOBJ;
 
     private int tileNo;
+
+    Vector2 rcPos;
     private void Start()
     {
         tileNo = 0;
+        rcPos = raycastOBJ.transform.position;
+        tilemap = GetComponent<Tilemap>();
     }
     // Update is called once per frame
     void Update()
     {
+        if (Input.GetKeyDown(KeyCode.G))
+        {
+            if (invUI.activeSelf)
+            {
+                for (int i = 0; i < InventorySystem.current.inventory.Count; i++)
+                {
+                    if (InventorySystem.current.inventory[i].data.displayName == "Carrot0")
+                    {
+                        InventorySystem.current.Remove(InventorySystem.current.inventory[i].data);
+                    }
+                }
+            }
+        }
+
+        if (Input.GetKeyDown(KeyCode.T))
+        {
+            if (invUI.activeSelf)
+            {
+                invUI.SetActive(false);
+            }
+            else
+            {
+                invUI.SetActive(true);
+            }
+        }
+
         //PC Movement 
         {
             gameObject.transform.position = oldPosition;
@@ -53,19 +87,19 @@ public class PlayerMove : MonoBehaviour
                 
                 if (endPos.x > startPos.x && endPos.y > startPos.y)
                 {
-                    Up();
+                        Up();
                 }
                 if (endPos.x < startPos.x && endPos.y < startPos.y)
                 {
-                    Down();
+                        Down();
                 }
                 if (endPos.x < startPos.x && endPos.y > startPos.y)
                 {
-                    Left();
+                        Left();
                 }
                 if (endPos.x > startPos.x && endPos.y < startPos.y)
                 {
-                    Right();
+                        Right();
                 }
                 
             }
@@ -74,29 +108,70 @@ public class PlayerMove : MonoBehaviour
     }
     public void Down()
     {
-        oldPosition.x += -0.5f;
-        oldPosition.y += -0.25f;
-        Debug.Log(oldPosition);
-        tileNo -= 1;
+        Vector2 nextPos = new Vector2(oldPosition.x - 0.5f, oldPosition.y - 0.25f);
+
+        Vector3Int temp = tilemap.WorldToCell(nextPos);
+        if (tilemap.HasTile(temp))
+        {
+            Debug.Log("Hi");
+            oldPosition.x += -0.5f;
+            oldPosition.y += -0.25f;
+        }
+        else
+        {
+            Debug.Log("asd");
+
+        }
     }
 
     public void Up()
     {
-        oldPosition.x += 0.5f;
-        oldPosition.y += 0.25f;
-        Debug.Log(oldPosition);
-        tileNo += 1;
+        Vector2 nextPos = new Vector2(oldPosition.x + 0.5f, oldPosition.y + 0.25f);
+        Vector3Int temp = tilemap.WorldToCell(nextPos);
+        if (tilemap.HasTile(temp))
+        {
+            Debug.Log("Hi");
+            oldPosition.x += 0.5f;
+            oldPosition.y += 0.25f;
+        }
+        else
+        {
+            Debug.Log("asd");
+
+        }
     }
 
     public void Left()
     {
-        oldPosition.x += -0.5f;
-        oldPosition.y += 0.25f;
+        Vector2 nextPos = new Vector2(oldPosition.x - 0.5f, oldPosition.y + 0.25f);
+        Vector3Int temp = tilemap.WorldToCell(nextPos);
+        if (tilemap.HasTile(temp))
+        {
+            Debug.Log("Hi");
+            oldPosition.x += -0.5f;
+            oldPosition.y += 0.25f;
+        }
+        else
+        {
+            Debug.Log("asd");
+
+        }
     }
 
     public void Right()
     {
-        oldPosition.x += 0.5f;
-        oldPosition.y += -0.25f;
+        Vector2 nextPos = new Vector2(oldPosition.x + 0.5f, oldPosition.y - 0.25f);
+        Vector3Int temp = tilemap.WorldToCell(nextPos);
+        if (tilemap.HasTile(temp))
+        {
+            Debug.Log("Hi");
+            oldPosition.x += 0.5f;
+            oldPosition.y += -0.25f;
+        }
+        else
+        {
+            Debug.Log("asd");
+
+        };
     }
 }
