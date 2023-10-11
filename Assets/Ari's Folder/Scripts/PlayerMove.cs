@@ -36,6 +36,7 @@ public class PlayerMove : MonoBehaviour
     private void Start()
     {
         tilemap = GameObject.FindGameObjectWithTag("GroundTile").GetComponent<Tilemap>();
+
         playerPosOffset = new Vector3Int(-1, -1, 0);
     }
     // Update is called once per frame
@@ -43,9 +44,17 @@ public class PlayerMove : MonoBehaviour
     {
         if(tilemap!=null)
         {
+
             Vector3Int pos = tilemap.LocalToCell(transform.position) + playerPosOffset;
             Debug.Log("player "+pos);
         }
+        else
+        {
+            tilemap = GameObject.FindGameObjectWithTag("GroundTile").GetComponent<Tilemap>();
+
+        }
+
+
 
         if (Input.GetKeyDown(KeyCode.G))
         {
@@ -144,14 +153,12 @@ public class PlayerMove : MonoBehaviour
 
         if (tilemap.HasTile(temp))
         {
-            Debug.Log("Hi");
             //oldPosition = Vector3.Slerp(oldPosition, nextPos, 2f * Time.deltaTime);
             oldPosition.x += -0.5f;
             oldPosition.y += -0.25f;
         }
         else
         {
-            Debug.Log("asd");
 
         }
     }
@@ -162,7 +169,6 @@ public class PlayerMove : MonoBehaviour
         Vector3Int temp = tilemap.WorldToCell(nextPos);
         if (tilemap.HasTile(temp))
         {
-            Debug.Log("Hi");
             //oldPosition = Vector3.Slerp(oldPosition, nextPos, 2f * Time.deltaTime);
 
             oldPosition.x += 0.5f;
@@ -170,7 +176,6 @@ public class PlayerMove : MonoBehaviour
         }
         else
         {
-            Debug.Log("asd");
 
         }
     }
@@ -181,7 +186,6 @@ public class PlayerMove : MonoBehaviour
         Vector3Int temp = tilemap.WorldToCell(nextPos);
         if (tilemap.HasTile(temp))
         {
-            Debug.Log("Hi");
             //oldPosition = Vector3.Slerp(oldPosition, nextPos, 2f * Time.deltaTime);
 
             oldPosition.x += -0.5f;
@@ -189,7 +193,6 @@ public class PlayerMove : MonoBehaviour
         }
         else
         {
-            Debug.Log("asd");
 
         }
     }
@@ -200,7 +203,6 @@ public class PlayerMove : MonoBehaviour
         Vector3Int temp = tilemap.WorldToCell(nextPos);
         if (tilemap.HasTile(temp))
         {
-            Debug.Log("Hi");
             //oldPosition = Vector3.Slerp(oldPosition, nextPos, 2f * Time.deltaTime);
 
             oldPosition.x += 0.5f;
@@ -208,7 +210,6 @@ public class PlayerMove : MonoBehaviour
         }
         else
         {
-            Debug.Log("asd");
         };
     }
 

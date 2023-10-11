@@ -241,8 +241,10 @@ GameObject:
   m_Component:
   - component: {fileID: 582719668}
   - component: {fileID: 582719667}
+  - component: {fileID: 582719670}
+  - component: {fileID: 582719669}
   m_Layer: 0
-  m_Name: temple-sliced_16
+  m_Name: TeleportPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -309,12 +311,60 @@ Transform:
   m_GameObject: {fileID: 582719666}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 3.05, y: 1.52, z: 0}
+  m_LocalPosition: {x: 2.819, y: 1.337, z: 0}
   m_LocalScale: {x: 2, y: 2, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &582719669
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 582719666}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9227886396ab1c3418e980af3e00422a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sceneName: MainMap
+--- !u!58 &582719670
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 582719666}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: -0.01}
+  serializedVersion: 2
+  m_Radius: 0.38615477
 --- !u!1 &834922968
 GameObject:
   m_ObjectHideFlags: 0
@@ -2610,6 +2660,7 @@ MonoBehaviour:
   controlPanel: {fileID: 1350106278}
   playerPrefab: {fileID: 8962227361284427219, guid: 5bf4373cfe47a3f43ab3fa02fe9254c9,
     type: 3}
+  teleportPoint: {fileID: 582719666}
   playerSpawnPoint: {fileID: 0}
 --- !u!4 &2065663500
 Transform:
