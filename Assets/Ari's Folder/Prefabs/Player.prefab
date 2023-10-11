@@ -107,8 +107,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: -2
-  m_Sprite: {fileID: -9095717837082945937, guid: 207ee8102dd4143d288186ef0be518ee,
-    type: 3}
+  m_Sprite: {fileID: 21300000, guid: 938912c02449d2d4eae3dcb8f95b94ed, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -134,6 +133,7 @@ MonoBehaviour:
   tilemap: {fileID: 0}
   invUI: {fileID: 0}
   raycastOBJ: {fileID: 743727257338232584}
+  em: {fileID: 0}
 --- !u!70 &5769809675636775723
 CapsuleCollider2D:
   m_ObjectHideFlags: 0

@@ -1,3 +1,4 @@
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
@@ -10,19 +11,32 @@ public class PlayerMove : MonoBehaviour
     //Mobile
     private Vector2 startPos;
     private Vector2 endPos;
+    private Vector3Int playerPosOffset;
     [SerializeField] public GameObject raycastOBJ;
+    public static PlayerMove instance;
 
     public EnemyManager em;
 
+    private void Awake()
+    {
+        if (instance == null)
+        {
+            instance = this;
+        }
+        else if (instance != null)
+        {
+            Destroy(gameObject);
+        }
+    }
     private void Start()
     {
         tilemap = GameObject.FindGameObjectWithTag("GroundTile").GetComponent<Tilemap>();
-
+        playerPosOffset = new Vector3Int(-1, -1, 0);
     }
     // Update is called once per frame
     void Update()
     {
-        Vector3Int pos = tilemap.WorldToCell(transform.position);
+        Vector3Int pos = tilemap.LocalToCell(transform.position) + playerPosOffset;
         Debug.Log(pos);
 
         if (Input.GetKeyDown(KeyCode.G))
@@ -114,21 +128,25 @@ public class PlayerMove : MonoBehaviour
         Vector2 nextPos = new Vector2(oldPosition.x - 0.5f, oldPosition.y - 0.25f);
 
         Vector3Int temp = tilemap.WorldToCell(nextPos);
-
-        for (int i = 0; i < em.all_enemyData.Length; i++)
+        if (em != null)
         {
-            if (em.all_enemyData[i].enemyVec3 == temp)
+            for (int i = 0; i < em.all_enemyData.Length; i++)
             {
-                em.all_enemyData[i].EnemyHP--;
-                return;
+                if (em.all_enemyData[i].enemyVec3 == temp)
+                {
+                    em.all_enemyData[i].EnemyHP--;
+                    return;
+                }
             }
         }
+
 
         if (tilemap.HasTile(temp))
         {
             Debug.Log("Hi");
-            oldPosition.x += -0.5f;
-            oldPosition.y += -0.25f;
+            oldPosition = Vector3.Slerp(oldPosition, nextPos, 2f * Time.deltaTime);
+            //oldPosition.x += -0.5f;
+            //oldPosition.y += -0.25f;
         }
         else
         {
@@ -144,8 +162,10 @@ public class PlayerMove : MonoBehaviour
         if (tilemap.HasTile(temp))
         {
             Debug.Log("Hi");
-            oldPosition.x += 0.5f;
-            oldPosition.y += 0.25f;
+            oldPosition = Vector3.Slerp(oldPosition, nextPos, 2f * Time.deltaTime);
+
+            //oldPosition.x += 0.5f;
+            //oldPosition.y += 0.25f;
         }
         else
         {
@@ -161,8 +181,10 @@ public class PlayerMove : MonoBehaviour
         if (tilemap.HasTile(temp))
         {
             Debug.Log("Hi");
-            oldPosition.x += -0.5f;
-            oldPosition.y += 0.25f;
+            oldPosition = Vector3.Slerp(oldPosition, nextPos, 2f * Time.deltaTime);
+
+            //oldPosition.x += -0.5f;
+            //oldPosition.y += 0.25f;
         }
         else
         {
@@ -178,8 +200,10 @@ public class PlayerMove : MonoBehaviour
         if (tilemap.HasTile(temp))
         {
             Debug.Log("Hi");
-            oldPosition.x += 0.5f;
-            oldPosition.y += -0.25f;
+            oldPosition = Vector3.Slerp(oldPosition, nextPos, 2f * Time.deltaTime);
+
+            //oldPosition.x += 0.5f;
+            //oldPosition.y += -0.25f;
         }
         else
         {

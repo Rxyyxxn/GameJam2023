@@ -5,6 +5,8 @@ using UnityEngine;
 public class TestManagerAri : MonoBehaviour
 {
     public GameObject controlPanel;
+    public GameObject playerPrefab;
+    public Transform playerSpawnPoint;
     Animator panelAnimator;
     bool isUp;
 
@@ -13,6 +15,7 @@ public class TestManagerAri : MonoBehaviour
        panelAnimator = controlPanel.GetComponent<Animator>();
        panelAnimator.SetBool("IsUp?",false);
        isUp = false;
+       InstantiatePlayer();
     }
     public void OnKeyPressed()
     {
@@ -26,5 +29,10 @@ public class TestManagerAri : MonoBehaviour
             panelAnimator.SetBool("IsUp?", false);
             isUp = false;
         }
+    }
+
+    public void InstantiatePlayer()
+    {
+        Instantiate(playerPrefab, playerSpawnPoint);
     }
 }
