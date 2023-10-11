@@ -144,9 +144,9 @@ public class PlayerMove : MonoBehaviour
         if (tilemap.HasTile(temp))
         {
             Debug.Log("Hi");
-            oldPosition = Vector3.Slerp(oldPosition, nextPos, 2f * Time.deltaTime);
-            //oldPosition.x += -0.5f;
-            //oldPosition.y += -0.25f;
+            //oldPosition = Vector3.Slerp(oldPosition, nextPos, 2f * Time.deltaTime);
+            oldPosition.x += -0.5f;
+            oldPosition.y += -0.25f;
         }
         else
         {
@@ -162,10 +162,10 @@ public class PlayerMove : MonoBehaviour
         if (tilemap.HasTile(temp))
         {
             Debug.Log("Hi");
-            oldPosition = Vector3.Slerp(oldPosition, nextPos, 2f * Time.deltaTime);
+            //oldPosition = Vector3.Slerp(oldPosition, nextPos, 2f * Time.deltaTime);
 
-            //oldPosition.x += 0.5f;
-            //oldPosition.y += 0.25f;
+            oldPosition.x += 0.5f;
+            oldPosition.y += 0.25f;
         }
         else
         {
@@ -181,10 +181,10 @@ public class PlayerMove : MonoBehaviour
         if (tilemap.HasTile(temp))
         {
             Debug.Log("Hi");
-            oldPosition = Vector3.Slerp(oldPosition, nextPos, 2f * Time.deltaTime);
+            //oldPosition = Vector3.Slerp(oldPosition, nextPos, 2f * Time.deltaTime);
 
-            //oldPosition.x += -0.5f;
-            //oldPosition.y += 0.25f;
+            oldPosition.x += -0.5f;
+            oldPosition.y += 0.25f;
         }
         else
         {
@@ -200,10 +200,10 @@ public class PlayerMove : MonoBehaviour
         if (tilemap.HasTile(temp))
         {
             Debug.Log("Hi");
-            oldPosition = Vector3.Slerp(oldPosition, nextPos, 2f * Time.deltaTime);
+            //oldPosition = Vector3.Slerp(oldPosition, nextPos, 2f * Time.deltaTime);
 
-            //oldPosition.x += 0.5f;
-            //oldPosition.y += -0.25f;
+            oldPosition.x += 0.5f;
+            oldPosition.y += -0.25f;
         }
         else
         {
