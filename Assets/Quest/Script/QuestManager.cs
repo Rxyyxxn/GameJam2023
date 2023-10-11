@@ -10,11 +10,13 @@ public class QuestManager : MonoBehaviour
 
     public List<Quest> quests;
     public List<Image> questImages;
+
     public QuestDetailsOverlay questDetailsOverlay; // Reference to the QuestDetailsOverlay script
+    public InventorySystem inventorySystem;
+
     public GameObject ItemText;
     float timer;
     bool itemactive = false;
-    int count;
     void Start()
     {
         ItemText.SetActive(false);
@@ -27,16 +29,18 @@ public class QuestManager : MonoBehaviour
         if (questDetailsOverlay.completionSlider.value == questDetailsOverlay.completionSlider.maxValue)
         {
             // If enough materials then complete the quest and reload now one, reset slider
-            if (questDetailsOverlay.ItemCount >= 1)
+            if (inventorySystem.ItemCount(quests[currentQuestIndex].itemname) >= quests[currentQuestIndex].requiredItems)
             {
-                questDetailsOverlay.ItemCount--;
+                //minus item from stack
+                //inventorySystem.ItemCount(quests[currentQuestIndex].itemname);
+ 
 
                 questDetailsOverlay.HideQuestDetails();
                 CompleteQuest(currentQuestIndex); // Get quest index reference
                 questDetailsOverlay.completionSlider.value = 0;
             }
             // Else if not enough material, text appear showing not enough material and slider goes back to 0
-            else if(questDetailsOverlay.ItemCount < 1/* && count. quests[currentQuestIndex].requiredItems<*/)
+            else if (inventorySystem.ItemCount(quests[currentQuestIndex].itemname)< quests[currentQuestIndex].requiredItems)
             {
                 ItemText.SetActive(true);
                 itemactive = true;

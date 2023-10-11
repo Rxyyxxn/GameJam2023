@@ -14,8 +14,6 @@ public class QuestDetailsOverlay : MonoBehaviour,IPointerUpHandler, IPointerDown
 
     private bool isPointerDown=false;
 
-    public int ItemCount = 1;
-
     private void Start()
     {
         // Add a listener to the slider's onValueChanged event

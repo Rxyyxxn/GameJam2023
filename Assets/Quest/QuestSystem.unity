@@ -2700,34 +2700,41 @@ MonoBehaviour:
   quests:
   - questDescription: Collect Mushroom
     description: Help a villager collect mushroom
+    itemname: Mushroom
     reward: 0
-    requiredItems: 0
+    requiredItems: 1
   - questDescription: Collect Special Item
     description: Lookout for a special item
+    itemname: Special
     reward: 0
-    requiredItems: 0
+    requiredItems: 1
   - questDescription: Collect Apple
     description: Some people are just too short to reach for an apple
+    itemname: Apple
     reward: 0
-    requiredItems: 0
+    requiredItems: 1
   - questDescription: Collect Carrot
     description: Pet rabbit needs food too
+    itemname: Carrot0
     reward: 0
-    requiredItems: 0
+    requiredItems: 1
   - questDescription: Collect coins
     description: Some people not as rich as you
+    itemname: Coins
     reward: 0
-    requiredItems: 0
+    requiredItems: 1
   - questDescription: Collect meat
     description: Town is lacking meat
+    itemname: Meat
     reward: 0
-    requiredItems: 0
+    requiredItems: 1
   questImages:
   - {fileID: 9150005158035863437}
   - {fileID: 9150005158125838405}
   - {fileID: 9150005157064969377}
   - {fileID: 9150005158373280581}
   questDetailsOverlay: {fileID: 9116909186445545379}
+  inventorySystem: {fileID: 0}
   ItemText: {fileID: 1463723631}
 --- !u!114 &8196769435937949615
 MonoBehaviour:
