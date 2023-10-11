@@ -18,12 +18,12 @@ public class CollisionDetection : MonoBehaviour
         //}
     }
 
-    private void OnTriggerStay2D(Collider2D other)
-    {
-        if (other.gameObject.CompareTag("enemy"))
-        {
-            other.gameObject.GetComponent<EnemyData>().EnemyHP--;
-        }
-    }
+    //private void OnTriggerStay2D(Collider2D other)
+    //{
+    //    if (other.gameObject.CompareTag("enemy"))
+    //    {
+    //        other.gameObject.GetComponent<EnemyData>().EnemyHP--;
+    //    }
+    //}
 }
 
