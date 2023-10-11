@@ -13,12 +13,15 @@ public class EnemyData : MonoBehaviour
 
     private EnemyState enemyState;
     private Direction enemyDirection;
+    private Direction RayCastDir;
 
     public Tilemap tmap;
 
     public Vector3Int enemyVec3;
 
     public Slider slider;
+
+    public GameObject playerGO;
 
     enum Direction
     {
@@ -55,7 +58,54 @@ public class EnemyData : MonoBehaviour
 
         enemyVec3 = tmap.WorldToCell(transform.position);
 
-        Debug.Log(enemyVec3);
+        Debug.Log("enemy "+enemyVec3);
+
+        if (DetectionRange(playerGO.GetComponent<PlayerMove>().GetPlayerTilePos()))
+        {
+            Debug.Log("ISEEU");
+        }
+
+        //if player in enemy detection range
+        //run raycast
+        for (int i = 0; i < 4; i++)
+        {
+            Vector2 dir;
+
+            switch (i)
+            {
+                case 0:
+                    dir = new Vector2(2.25f,1f);
+                    RayCastDir = Direction.Up;
+                    break;
+                case 1:
+                    dir = new Vector2(-1.75f, -1f) * 1.25f;
+                    RayCastDir = Direction.Down;
+                    break;
+                case 2:
+                    dir = new Vector2(-5f, 2.25f) / 2.35f;
+                    RayCastDir = Direction.Left;
+                    break;
+                case 3:
+                    dir = new Vector2(5f, -2.75f) / 2.35f;
+                    RayCastDir = Direction.Right;
+                    break;
+                default:
+                    dir = new Vector2(2.25f, 1f);
+                    RayCastDir = Direction.Up;
+                    break;
+            }
+
+            
+            Debug.DrawRay(transform.position, transform.TransformDirection(dir), Color.red);
+
+            RaycastHit2D hit = Physics2D.Raycast(transform.position, transform.TransformDirection(dir), 10f);
+
+            //if (hit)
+            //{
+            //    Debug.Log("Hit " + hit.collider.name);
+            //}
+        }
+        //raycast end
 
         switch (enemyState)
         {
@@ -89,5 +139,25 @@ public class EnemyData : MonoBehaviour
     void Death()
     {
         Destroy(gameObject);
+    }
+
+    public bool DetectionRange(Vector3 pos)
+    {
+        int x = enemyVec3.x;
+        int y = enemyVec3.y;
+        int highestx = x + 4;
+        int lowestx = x - 4;
+        int highesty = y + 4;
+        int lowesty = y - 4;
+
+        if ((pos.x >= lowestx && pos.x <= highestx) && (pos.y >= lowesty && pos.y <= highesty))
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+
     }
 }

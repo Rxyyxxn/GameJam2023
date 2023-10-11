@@ -17,6 +17,10 @@ public class PlayerMove : MonoBehaviour
 
     public EnemyManager em;
 
+    public int attakDmg;
+    public int HP;
+    public int goldCount;
+
     private void Awake()
     {
         if (instance == null)
@@ -40,11 +44,7 @@ public class PlayerMove : MonoBehaviour
         if(tilemap!=null)
         {
             Vector3Int pos = tilemap.LocalToCell(transform.position) + playerPosOffset;
-            Debug.Log(pos);
-        }
-        else
-        {
-
+            Debug.Log("player "+pos);
         }
 
         if (Input.GetKeyDown(KeyCode.G))
@@ -65,14 +65,7 @@ public class PlayerMove : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.T))
         {
-            if (invUI.activeSelf)
-            {
-                invUI.SetActive(false);
-            }
-            else
-            {
-                invUI.SetActive(true);
-            }
+            invUI.SetActive(!invUI.activeSelf);
         }
 
         //PC Movement 
@@ -135,7 +128,7 @@ public class PlayerMove : MonoBehaviour
     {
         Vector2 nextPos = new Vector2(oldPosition.x - 0.5f, oldPosition.y - 0.25f);
 
-        Vector3Int temp = tilemap.WorldToCell(nextPos);
+        Vector3Int temp = tilemap.WorldToCell(nextPos) + playerPosOffset;
         if (em != null)
         {
             for (int i = 0; i < em.all_enemyData.Length; i++)
@@ -217,5 +210,10 @@ public class PlayerMove : MonoBehaviour
         {
             Debug.Log("asd");
         };
+    }
+
+    public Vector3Int GetPlayerTilePos()
+    {
+        return tilemap.WorldToCell(transform.position);
     }
 }
