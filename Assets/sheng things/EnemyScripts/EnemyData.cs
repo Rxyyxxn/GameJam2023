@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.Tilemaps;
 
 public class EnemyData : MonoBehaviour
@@ -16,6 +17,8 @@ public class EnemyData : MonoBehaviour
     public Tilemap tmap;
 
     public Vector3Int enemyVec3;
+
+    public Slider slider;
 
     enum Direction
     {
@@ -43,6 +46,8 @@ public class EnemyData : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        slider.value = EnemyHP;
+
         if (EnemyHP <= 0)
         {
             Death();
