@@ -8,9 +8,9 @@ public class QuestUI : MonoBehaviour
     private GameObject QuestInfo;
     private void Start()
     {
+        QuestInfo = GameObject.Find("QuestInfo");
         if(QuestInfo!=null)
         {
-            QuestInfo = GameObject.Find("QuestInfo");
             QuestInfo.SetActive(false);
         }
         else

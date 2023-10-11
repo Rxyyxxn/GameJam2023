@@ -21,12 +21,19 @@ public class InventoryUI_Manager : MonoBehaviour
 
     private void OnUpdateInventory()
     {
-        foreach (Transform t in InventoryBar)
+        if (InventoryBar!=null)
         {
-            Destroy(t.gameObject);
-        }
+            foreach (Transform t in InventoryBar)
+            {
+                Destroy(t.gameObject);
+            }
 
-        DrawInventory();
+            DrawInventory();
+        }
+        else
+        {
+
+        }
     }
 
     public void DrawInventory()

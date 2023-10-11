@@ -4,7 +4,13 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/sheng2.unity
+    guid: 6dbc002f8fc3353429fcc5a142e090d5
+  - enabled: 1
+    path: Assets/Quest/QuestSystem.unity
+    guid: 14b3b625388db524c8c4083cd1dca739
   m_configObjects:
     com.unity.adaptiveperformance.simulator.provider_settings: {fileID: 11400000,
       guid: f14496204f1369d43b555f6fd5e583b4, type: 2}
