@@ -26,6 +26,8 @@ public class InventorySystem : MonoBehaviour
         inventory = new List<InventoryItem>();
         m_itemDictionary = new Dictionary<InventoryItemData, InventoryItem>();
         current = this;
+
+        DontDestroyOnLoad(this.gameObject);
     }
 
     public InventoryItem Get(InventoryItemData refData)

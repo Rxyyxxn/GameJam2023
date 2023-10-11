@@ -17,6 +17,10 @@ public class SlotScript : MonoBehaviour
 
     [SerializeField]
     private TextMeshProUGUI m_stackLabel;
+    private void Awake()
+    {
+        DontDestroyOnLoad(this.gameObject);
+    }
 
     public void Set(InventoryItem item)
     {

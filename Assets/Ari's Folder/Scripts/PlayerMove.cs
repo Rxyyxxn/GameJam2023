@@ -27,6 +27,7 @@ public class PlayerMove : MonoBehaviour
         {
             Destroy(gameObject);
         }
+        DontDestroyOnLoad(gameObject);
     }
     private void Start()
     {

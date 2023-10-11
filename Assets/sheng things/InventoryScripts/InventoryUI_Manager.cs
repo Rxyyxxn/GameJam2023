@@ -8,6 +8,10 @@ public class InventoryUI_Manager : MonoBehaviour
     private GameObject m_slotPrefab;
 
     public Transform InventoryBar;
+    private void Awake()
+    {
+        DontDestroyOnLoad(this.gameObject);
+    }
 
     // Start is called before the first frame update
     public void Start()

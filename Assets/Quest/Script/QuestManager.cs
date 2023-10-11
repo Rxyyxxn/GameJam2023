@@ -12,7 +12,7 @@ public class QuestManager : MonoBehaviour
     public List<Image> questImages;
 
     public QuestDetailsOverlay questDetailsOverlay; // Reference to the QuestDetailsOverlay script
-    public InventorySystem inventorySystem;
+    private InventorySystem inventorySystem;
 
     public GameObject ItemText;
     float timer;
@@ -25,6 +25,7 @@ public class QuestManager : MonoBehaviour
 
     private void Update()
     {
+        inventorySystem = InventorySystem.current;
         Debug.Log(timer);
         if (questDetailsOverlay.completionSlider.value == questDetailsOverlay.completionSlider.maxValue)
         {
@@ -32,8 +33,7 @@ public class QuestManager : MonoBehaviour
             if (inventorySystem.ItemCount(quests[currentQuestIndex].itemname) >= quests[currentQuestIndex].requiredItems)
             {
                 //minus item from stack
-                //inventorySystem.ItemCount(quests[currentQuestIndex].itemname);
- 
+                inventorySystem.Remove(inventorySystem.GetItemDataThrough_ID(quests[currentQuestIndex].QuestIndex));
 
                 questDetailsOverlay.HideQuestDetails();
                 CompleteQuest(currentQuestIndex); // Get quest index reference
