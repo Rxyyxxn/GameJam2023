@@ -37,8 +37,15 @@ public class PlayerMove : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Vector3Int pos = tilemap.LocalToCell(transform.position) + playerPosOffset;
-        Debug.Log(pos);
+        if(tilemap!=null)
+        {
+            Vector3Int pos = tilemap.LocalToCell(transform.position) + playerPosOffset;
+            Debug.Log(pos);
+        }
+        else
+        {
+
+        }
 
         if (Input.GetKeyDown(KeyCode.G))
         {
