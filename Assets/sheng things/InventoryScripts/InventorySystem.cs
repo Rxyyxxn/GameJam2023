@@ -77,6 +77,11 @@ public class InventorySystem : MonoBehaviour
             {
                 return inventory[i].stackSize;
             }
+            else
+            {
+                Debug.Log("Item name not found");
+
+            }
         }
 
         return 0;
