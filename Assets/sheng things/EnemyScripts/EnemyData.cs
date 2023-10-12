@@ -32,6 +32,7 @@ public class EnemyData : MonoBehaviour
     bool movable = true;
 
     public float attackPauseTimer;
+    float timer = 0.0f;
 
     enum Direction
     {
@@ -72,7 +73,7 @@ public class EnemyData : MonoBehaviour
 
         //Debug.Log("enemy "+enemyVec3);
 
-        DetectionRange(playerGO.GetComponent<PlayerMove>().GetPlayerTilePos());
+        //DetectionRange(playerGO.GetComponent<PlayerMove>().GetPlayerTilePos());
 
         //if player in enemy detection range
         //run raycast
@@ -115,28 +116,47 @@ public class EnemyData : MonoBehaviour
             //}
         }
         //raycast end
-
+        
         switch (enemyState)
         {
             case EnemyState.Idle:
-                if (DetectionRange(playerGO.GetComponent<PlayerMove>().GetPlayerTilePos()))
-                {
-                    enemyState = EnemyState.Chase;
-                }
+                DetectionRange(playerGO.GetComponent<PlayerMove>().GetPlayerTilePos());
                 break;
             case EnemyState.Chase:
                 //pathfind to player
-                ChaseTarget(playerGO.GetComponent<PlayerMove>().GetPlayerTilePos());
+                //ChaseTarget(playerGO.GetComponent<PlayerMove>().GetPlayerTilePos());
                 break;
             case EnemyState.Attack:
-
+                if (
+                    enemyVec3.x == playerGO.GetComponent<PlayerMove>().GetPlayerTilePos().x && enemyVec3.y == playerGO.GetComponent<PlayerMove>().GetPlayerTilePos().y - 1 
+                    ||
+                    enemyVec3.x == playerGO.GetComponent<PlayerMove>().GetPlayerTilePos().x && enemyVec3.y == playerGO.GetComponent<PlayerMove>().GetPlayerTilePos().y + 1
+                    ||
+                    enemyVec3.y == playerGO.GetComponent<PlayerMove>().GetPlayerTilePos().y && enemyVec3.x == playerGO.GetComponent<PlayerMove>().GetPlayerTilePos().x + 1
+                    ||
+                    enemyVec3.y == playerGO.GetComponent<PlayerMove>().GetPlayerTilePos().y && enemyVec3.x == playerGO.GetComponent<PlayerMove>().GetPlayerTilePos().x - 1
+                    )
+                {
+                    Debug.Log("qwer");
+                    enemyState = EnemyState.AttackPause;
+                }
+                else
+                {
+                    enemyState = EnemyState.Idle;
+                }
                 break;
             case EnemyState.AttackPause:
-
+                timer += Time.deltaTime;
+                if (timer > attackPauseTimer)
+                {
+                    timer = 0.0f;
+                    enemyState = EnemyState.Attack;
+                }
                 break;
             default:
                 break;
         }
+        
     }
 
     void Death()
@@ -144,7 +164,7 @@ public class EnemyData : MonoBehaviour
         Destroy(gameObject);
     }
 
-    public bool DetectionRange(Vector3Int pos)
+    public void DetectionRange(Vector3Int pos)
     {
         int x = enemyVec3.x;
         int y = enemyVec3.y;
@@ -157,13 +177,12 @@ public class EnemyData : MonoBehaviour
         {
             if (movable)
             {
-                return true;
+                ChaseTarget(pos);
             }
-            return false;
         }
         else
         {
-            return false;
+            return;
         }
 
     }
@@ -188,8 +207,7 @@ public class EnemyData : MonoBehaviour
         //if player is right infront of enemy
         if ((yDiff == 0 && xDiff == 1) || (yDiff == 1 && xDiff == 0))
         {
-            Debug.Log("end");
-            enemyState = EnemyState.Attack;
+            enemyState = EnemyState.AttackPause;
             return;
         }
         else if (yDiff != 0)
@@ -329,9 +347,9 @@ public class EnemyData : MonoBehaviour
             nextTilePos = tmap.WorldToCell(nextPos);
             if (nextTilePos == playerGO.GetComponent<PlayerMove>().GetPlayerTilePos())
             {
-                yield break;
                 Moved = false;
                 movable = true;
+                yield break;
             }
             transform.position = nextPos;
 
@@ -341,9 +359,9 @@ public class EnemyData : MonoBehaviour
             nextTilePos = tmap.WorldToCell(nextPos);
             if (nextTilePos == playerGO.GetComponent<PlayerMove>().GetPlayerTilePos())
             {
-                yield break;
                 Moved = false;
                 movable = true;
+                yield break;
             }
             transform.position = nextPos;
 
@@ -354,9 +372,9 @@ public class EnemyData : MonoBehaviour
             nextTilePos = tmap.WorldToCell(nextPos);
             if (nextTilePos == playerGO.GetComponent<PlayerMove>().GetPlayerTilePos())
             {
-                yield break;
                 Moved = false;
                 movable = true;
+                yield break;
             }
             transform.position = nextPos;
 
@@ -366,9 +384,9 @@ public class EnemyData : MonoBehaviour
             nextTilePos = tmap.WorldToCell(nextPos);
             if (nextTilePos == playerGO.GetComponent<PlayerMove>().GetPlayerTilePos())
             {
-                yield break;
                 Moved = false;
                 movable = true;
+                yield break;
             }
             transform.position = nextPos;
         }
@@ -381,9 +399,9 @@ public class EnemyData : MonoBehaviour
             nextTilePos = tmap.WorldToCell(nextPos);
             if (nextTilePos == playerGO.GetComponent<PlayerMove>().GetPlayerTilePos())
             {
-                yield break;
                 Moved = false;
                 movable = true;
+                yield break;
             }
             transform.position = nextPos;
 
@@ -393,9 +411,9 @@ public class EnemyData : MonoBehaviour
             nextTilePos = tmap.WorldToCell(nextPos);
             if (nextTilePos == playerGO.GetComponent<PlayerMove>().GetPlayerTilePos())
             {
-                yield break;
                 Moved = false;
                 movable = true;
+                yield break;
             }
             transform.position = nextPos;
 
@@ -406,9 +424,9 @@ public class EnemyData : MonoBehaviour
             nextTilePos = tmap.WorldToCell(nextPos);
             if (nextTilePos == playerGO.GetComponent<PlayerMove>().GetPlayerTilePos())
             {
-                yield break;
                 Moved = false;
                 movable = true;
+                yield break;
             }
             transform.position = nextPos;
 
@@ -418,9 +436,9 @@ public class EnemyData : MonoBehaviour
             nextTilePos = tmap.WorldToCell(nextPos);
             if (nextTilePos == playerGO.GetComponent<PlayerMove>().GetPlayerTilePos())
             {
-                yield break;
                 Moved = false;
                 movable = true;
+                yield break;
             }
             transform.position = nextPos;
         }
