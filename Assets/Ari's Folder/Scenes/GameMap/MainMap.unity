@@ -19574,6 +19574,7 @@ MonoBehaviour:
   controlPanel: {fileID: 1350106278}
   playerPrefab: {fileID: 8962227361284427219, guid: 5bf4373cfe47a3f43ab3fa02fe9254c9,
     type: 3}
+  teleportPoint: {fileID: 0}
   playerSpawnPoint: {fileID: 0}
 --- !u!4 &2065663500
 Transform:
