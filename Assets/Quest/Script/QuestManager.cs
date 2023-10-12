@@ -21,6 +21,7 @@ public class QuestManager : MonoBehaviour
     {
         ItemText.SetActive(false);
         AssignRandomQuests();
+        gameObject.SetActive(false);
     }
 
     private void Update()

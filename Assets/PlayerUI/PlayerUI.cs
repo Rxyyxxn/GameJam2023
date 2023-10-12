@@ -1,10 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class PlayerUI : MonoBehaviour
 {
     public static PlayerUI instance;
+    private Player player=new Player();
+    public TextMeshProUGUI coins_Text; 
     private void Awake()
     {
         if (instance == null)
@@ -21,12 +24,12 @@ public class PlayerUI : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        player.coins = 0;
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        coins_Text.text = player.coins.ToString();
     }
 }
