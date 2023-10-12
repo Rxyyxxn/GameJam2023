@@ -18,8 +18,10 @@ public class PlayerMove : MonoBehaviour
     public EnemyManager em;
 
     public int attakDmg;
+    private int OriginalAtkDmg;
     public int HP;
     public int goldCount;
+    int steps;
 
     private void Awake()
     {
@@ -41,6 +43,7 @@ public class PlayerMove : MonoBehaviour
         tilemap = GameObject.FindGameObjectWithTag("GroundTile").GetComponent<Tilemap>();
         tilemap.CellToWorld(tilemap.WorldToCell(transform.position));
         playerPosOffset = new Vector3Int(-1, -1, 0);
+        OriginalAtkDmg = attakDmg;
     }
     // Update is called once per frame
     void Update()
@@ -146,7 +149,8 @@ public class PlayerMove : MonoBehaviour
             {
                 if (em.all_enemyData[i].enemyVec3 == temp)
                 {
-                    em.all_enemyData[i].EnemyHP--;
+                    em.all_enemyData[i].EnemyHP -= attakDmg;
+                    attakDmg = OriginalAtkDmg;
                     return;
                 }
             }
@@ -158,6 +162,7 @@ public class PlayerMove : MonoBehaviour
             //oldPosition = Vector3.Slerp(oldPosition, nextPos, 2f * Time.deltaTime);
             oldPosition.x += -0.5f;
             oldPosition.y += -0.25f;
+            RollDice(0,6);
         }
     }
 
@@ -172,7 +177,8 @@ public class PlayerMove : MonoBehaviour
             {
                 if (em.all_enemyData[i].enemyVec3 == temp)
                 {
-                    em.all_enemyData[i].EnemyHP--;
+                    em.all_enemyData[i].EnemyHP -= attakDmg;
+                    attakDmg = OriginalAtkDmg;
                     return;
                 }
             }
@@ -184,6 +190,7 @@ public class PlayerMove : MonoBehaviour
 
             oldPosition.x += 0.5f;
             oldPosition.y += 0.25f;
+            RollDice(0,6);
         }
         else
         {
@@ -202,7 +209,8 @@ public class PlayerMove : MonoBehaviour
             {
                 if (em.all_enemyData[i].enemyVec3 == temp)
                 {
-                    em.all_enemyData[i].EnemyHP--;
+                    em.all_enemyData[i].EnemyHP -= attakDmg;
+                    attakDmg = OriginalAtkDmg;
                     return;
                 }
             }
@@ -214,6 +222,7 @@ public class PlayerMove : MonoBehaviour
 
             oldPosition.x += -0.5f;
             oldPosition.y += 0.25f;
+            RollDice(0,6);
         }
         else
         {
@@ -232,7 +241,8 @@ public class PlayerMove : MonoBehaviour
             {
                 if (em.all_enemyData[i].enemyVec3 == temp)
                 {
-                    em.all_enemyData[i].EnemyHP--;
+                    em.all_enemyData[i].EnemyHP -= attakDmg;
+                    attakDmg = OriginalAtkDmg;
                     return;
                 }
             }
@@ -244,6 +254,7 @@ public class PlayerMove : MonoBehaviour
 
             oldPosition.x += 0.5f;
             oldPosition.y += -0.25f;
+            RollDice(0,6);
         }
         else
         {
@@ -253,5 +264,96 @@ public class PlayerMove : MonoBehaviour
     public Vector3Int GetPlayerTilePos()
     {
         return tilemap.WorldToCell(transform.position);
+    }
+
+    public void RollDice(int dicetype, int MaxDieNum)
+    {
+        steps++;
+        //basic die
+        if (dicetype == 0)
+        {
+            if (steps == 1)
+            {
+                int dieNumber = Random.Range(1, MaxDieNum + 1);
+                Debug.Log("die number : " + dieNumber);
+                DefaultDiceBoost(dieNumber, MaxDieNum);
+                steps = 0;
+            }
+        }
+        //variant die
+        else
+        {
+            if (steps == 10)
+            {
+
+            }
+        }
+        return;
+    }
+
+    public void DefaultDiceBoost(int dienum, int MaxDieNum)
+    {
+        attakDmg = OriginalAtkDmg;
+        switch (MaxDieNum)
+        {
+            case 6:
+                if (dienum <= 3)
+                {
+                    attakDmg += 1;
+                }
+                else if (dienum == 6)
+                {
+                    attakDmg += 3;
+                }
+                else
+                {
+                    attakDmg += 2;
+                }
+                break;
+            case 8:
+                if (dienum <= 3)
+                {
+                    attakDmg += 1;
+                }
+                else if (dienum >= 7)
+                {
+                    attakDmg += 3;
+                }
+                else
+                {
+                    attakDmg += 2;
+                }
+                break;
+            case 10:
+                if (dienum <= 3)
+                {
+                    attakDmg += 1;
+                }
+                else if (dienum >= 8)
+                {
+                    attakDmg += 3;
+                }
+                else
+                {
+                    attakDmg += 2;
+                }
+                break;
+            case 12:
+                if (dienum <= 3)
+                {
+                    attakDmg += 1;
+                }
+                else if (dienum >= 9)
+                {
+                    attakDmg += 3;
+                }
+                else
+                {
+                    attakDmg += 2;
+                }
+                break;
+            default:
+                break;
+        }
     }
 }

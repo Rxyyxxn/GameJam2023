@@ -137,7 +137,7 @@ public class EnemyData : MonoBehaviour
                     enemyVec3.y == playerGO.GetComponent<PlayerMove>().GetPlayerTilePos().y && enemyVec3.x == playerGO.GetComponent<PlayerMove>().GetPlayerTilePos().x - 1
                     )
                 {
-                    Debug.Log("qwer");
+                    playerGO.GetComponent<PlayerMove>().HP -= EnemyAtk;
                     enemyState = EnemyState.AttackPause;
                 }
                 else
@@ -161,6 +161,7 @@ public class EnemyData : MonoBehaviour
 
     void Death()
     {
+        playerGO.GetComponent<PlayerMove>().goldCount += 10;
         Destroy(gameObject);
     }
 
