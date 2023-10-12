@@ -1,0 +1,830 @@
+fileFormatVersion: 2
+guid: 3a87f94a49bf17a418749e4e67f9685c
+TextureImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 12
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 0
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 32
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Server
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Lobby_Tiles_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 92
+        width: 161
+        height: 85
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 0, y: -42.5}
+        - {x: 80.5, y: 0}
+        - {x: 0, y: 42.5}
+        - {x: -80.5, y: 0}
+      physicsShape:
+      - - {x: 0, y: -42.5}
+        - {x: 80.5, y: 0}
+        - {x: 0, y: 42.5}
+        - {x: -80.5, y: 0}
+      tessellationDetail: 0
+      bones: []
+      spriteID: 30219422314518f45b76010c9bc5d038
+      internalID: 248162916
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Lobby_Tiles_1
+      rect:
+        serializedVersion: 2
+        x: 161
+        y: 92
+        width: 161
+        height: 85
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 0, y: -42.5}
+        - {x: 80.5, y: 0}
+        - {x: 0, y: 42.5}
+        - {x: -80.5, y: 0}
+      physicsShape:
+      - - {x: 0, y: -42.5}
+        - {x: 80.5, y: 0}
+        - {x: 0, y: 42.5}
+        - {x: -80.5, y: 0}
+      tessellationDetail: 0
+      bones: []
+      spriteID: a9bf66fbb894dc84686cd1da96b2dfc2
+      internalID: -79730610
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Lobby_Tiles_2
+      rect:
+        serializedVersion: 2
+        x: 322
+        y: 92
+        width: 161
+        height: 85
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 0, y: -42.5}
+        - {x: 80.5, y: 0}
+        - {x: 0, y: 42.5}
+        - {x: -80.5, y: 0}
+      physicsShape:
+      - - {x: 0, y: -42.5}
+        - {x: 80.5, y: 0}
+        - {x: 0, y: 42.5}
+        - {x: -80.5, y: 0}
+      tessellationDetail: 0
+      bones: []
+      spriteID: 554c9c898b4737e43a4b32b8f3f78d93
+      internalID: -1328451391
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Lobby_Tiles_3
+      rect:
+        serializedVersion: 2
+        x: 483
+        y: 92
+        width: 161
+        height: 85
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 0, y: -42.5}
+        - {x: 80.5, y: 0}
+        - {x: 0, y: 42.5}
+        - {x: -80.5, y: 0}
+      physicsShape:
+      - - {x: 0, y: -42.5}
+        - {x: 80.5, y: 0}
+        - {x: 0, y: 42.5}
+        - {x: -80.5, y: 0}
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9dffe31e366440d40b1c239301b9c520
+      internalID: -1559045738
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Lobby_Tiles_4
+      rect:
+        serializedVersion: 2
+        x: 644
+        y: 92
+        width: 161
+        height: 85
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 0, y: -42.5}
+        - {x: 80.5, y: 0}
+        - {x: 0, y: 42.5}
+        - {x: -80.5, y: 0}
+      physicsShape:
+      - - {x: 0, y: -42.5}
+        - {x: 80.5, y: 0}
+        - {x: 0, y: 42.5}
+        - {x: -80.5, y: 0}
+      tessellationDetail: 0
+      bones: []
+      spriteID: a6ef6bc96374cf444b02fa416a6f6fc8
+      internalID: 1059599766
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Lobby_Tiles_5
+      rect:
+        serializedVersion: 2
+        x: 805
+        y: 92
+        width: 161
+        height: 85
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 0, y: -42.5}
+        - {x: 80.5, y: 0}
+        - {x: 0, y: 42.5}
+        - {x: -80.5, y: 0}
+      physicsShape:
+      - - {x: 0, y: -42.5}
+        - {x: 80.5, y: 0}
+        - {x: 0, y: 42.5}
+        - {x: -80.5, y: 0}
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0559074ebd0adfb488b467efe493b62d
+      internalID: -953667755
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Lobby_Tiles_6
+      rect:
+        serializedVersion: 2
+        x: 966
+        y: 92
+        width: 161
+        height: 85
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 0, y: -42.5}
+        - {x: 80.5, y: 0}
+        - {x: 0, y: 42.5}
+        - {x: -80.5, y: 0}
+      physicsShape:
+      - - {x: 0, y: -42.5}
+        - {x: 80.5, y: 0}
+        - {x: 0, y: 42.5}
+        - {x: -80.5, y: 0}
+      tessellationDetail: 0
+      bones: []
+      spriteID: e552d9c2f99732f469c66ecc5176c20a
+      internalID: 172045282
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Lobby_Tiles_7
+      rect:
+        serializedVersion: 2
+        x: 1127
+        y: 92
+        width: 161
+        height: 85
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 0, y: -42.5}
+        - {x: 80.5, y: 0}
+        - {x: 0, y: 42.5}
+        - {x: -80.5, y: 0}
+      physicsShape:
+      - - {x: 0, y: -42.5}
+        - {x: 80.5, y: 0}
+        - {x: 0, y: 42.5}
+        - {x: -80.5, y: 0}
+      tessellationDetail: 0
+      bones: []
+      spriteID: 21ed1df861547444eb3ff156406b7c70
+      internalID: 905278414
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Lobby_Tiles_8
+      rect:
+        serializedVersion: 2
+        x: 80.5
+        y: 49.5
+        width: 161
+        height: 85
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 0, y: -42.5}
+        - {x: 80.5, y: 0}
+        - {x: 0, y: 42.5}
+        - {x: -80.5, y: 0}
+      physicsShape:
+      - - {x: 0, y: -42.5}
+        - {x: 80.5, y: 0}
+        - {x: 0, y: 42.5}
+        - {x: -80.5, y: 0}
+      tessellationDetail: 0
+      bones: []
+      spriteID: 07806d048ceb4a9499014bbe6a7ff24b
+      internalID: 1249188523
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Lobby_Tiles_9
+      rect:
+        serializedVersion: 2
+        x: 241
+        y: 49
+        width: 161
+        height: 85
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 0, y: -42.5}
+        - {x: 80.5, y: 0}
+        - {x: 0, y: 42.5}
+        - {x: -80.5, y: 0}
+      physicsShape:
+      - - {x: 0, y: -42.5}
+        - {x: 80.5, y: 0}
+        - {x: 0, y: 42.5}
+        - {x: -80.5, y: 0}
+      tessellationDetail: 0
+      bones: []
+      spriteID: 909371e871e171e45a011134f437847e
+      internalID: -518264676
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Lobby_Tiles_10
+      rect:
+        serializedVersion: 2
+        x: 402.5
+        y: 49.5
+        width: 161
+        height: 85
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 0, y: -42.5}
+        - {x: 80.5, y: 0}
+        - {x: 0, y: 42.5}
+        - {x: -80.5, y: 0}
+      physicsShape:
+      - - {x: 0, y: -42.5}
+        - {x: 80.5, y: 0}
+        - {x: 0, y: 42.5}
+        - {x: -80.5, y: 0}
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6986526ca74d5be49802a0eb8739f046
+      internalID: 400813697
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Lobby_Tiles_11
+      rect:
+        serializedVersion: 2
+        x: 563.5
+        y: 49.5
+        width: 161
+        height: 85
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 0, y: -42.5}
+        - {x: 80.5, y: 0}
+        - {x: 0, y: 42.5}
+        - {x: -80.5, y: 0}
+      physicsShape:
+      - - {x: 0, y: -42.5}
+        - {x: 80.5, y: 0}
+        - {x: 0, y: 42.5}
+        - {x: -80.5, y: 0}
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4e9db5390f830084293c474aa0f2e4ae
+      internalID: 651142852
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Lobby_Tiles_12
+      rect:
+        serializedVersion: 2
+        x: 724.5
+        y: 49.5
+        width: 161
+        height: 85
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 0, y: -42.5}
+        - {x: 80.5, y: 0}
+        - {x: 0, y: 42.5}
+        - {x: -80.5, y: 0}
+      physicsShape:
+      - - {x: 0, y: -42.5}
+        - {x: 80.5, y: 0}
+        - {x: 0, y: 42.5}
+        - {x: -80.5, y: 0}
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3207f79471241624c93a13d6e8fb702c
+      internalID: -790458478
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Lobby_Tiles_13
+      rect:
+        serializedVersion: 2
+        x: 885.5
+        y: 49.5
+        width: 161
+        height: 85
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 0, y: -42.5}
+        - {x: 80.5, y: 0}
+        - {x: 0, y: 42.5}
+        - {x: -80.5, y: 0}
+      physicsShape:
+      - - {x: 0, y: -42.5}
+        - {x: 80.5, y: 0}
+        - {x: 0, y: 42.5}
+        - {x: -80.5, y: 0}
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5834f35f6460fe44e8ddadb092c98510
+      internalID: -941665288
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Lobby_Tiles_14
+      rect:
+        serializedVersion: 2
+        x: 1046.5
+        y: 49.5
+        width: 161
+        height: 85
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 0, y: -42.5}
+        - {x: 80.5, y: 0}
+        - {x: 0, y: 42.5}
+        - {x: -80.5, y: 0}
+      physicsShape:
+      - - {x: 0, y: -42.5}
+        - {x: 80.5, y: 0}
+        - {x: 0, y: 42.5}
+        - {x: -80.5, y: 0}
+      tessellationDetail: 0
+      bones: []
+      spriteID: f9a64a11f8c40e64982147bda3429d1c
+      internalID: 309778459
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Lobby_Tiles_15
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 7
+        width: 161
+        height: 85
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 0, y: -42.5}
+        - {x: 80.5, y: 0}
+        - {x: 0, y: 42.5}
+        - {x: -80.5, y: 0}
+      physicsShape:
+      - - {x: 0, y: -42.5}
+        - {x: 80.5, y: 0}
+        - {x: 0, y: 42.5}
+        - {x: -80.5, y: 0}
+      tessellationDetail: 0
+      bones: []
+      spriteID: 417ff4e7dc48c444283901ea54c74e31
+      internalID: -1134418162
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Lobby_Tiles_16
+      rect:
+        serializedVersion: 2
+        x: 161
+        y: 7
+        width: 161
+        height: 85
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 0, y: -42.5}
+        - {x: 80.5, y: 0}
+        - {x: 0, y: 42.5}
+        - {x: -80.5, y: 0}
+      physicsShape:
+      - - {x: 0, y: -42.5}
+        - {x: 80.5, y: 0}
+        - {x: 0, y: 42.5}
+        - {x: -80.5, y: 0}
+      tessellationDetail: 0
+      bones: []
+      spriteID: 13d331546015e97459d687795479ba4f
+      internalID: 1463857639
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Lobby_Tiles_17
+      rect:
+        serializedVersion: 2
+        x: 322
+        y: 7
+        width: 161
+        height: 85
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 0, y: -42.5}
+        - {x: 80.5, y: 0}
+        - {x: 0, y: 42.5}
+        - {x: -80.5, y: 0}
+      physicsShape:
+      - - {x: 0, y: -42.5}
+        - {x: 80.5, y: 0}
+        - {x: 0, y: 42.5}
+        - {x: -80.5, y: 0}
+      tessellationDetail: 0
+      bones: []
+      spriteID: 517dccb1edce9b84281784902aa3d4d9
+      internalID: 101469999
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Lobby_Tiles_18
+      rect:
+        serializedVersion: 2
+        x: 483
+        y: 7
+        width: 161
+        height: 85
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 0, y: -42.5}
+        - {x: 80.5, y: 0}
+        - {x: 0, y: 42.5}
+        - {x: -80.5, y: 0}
+      physicsShape:
+      - - {x: 0, y: -42.5}
+        - {x: 80.5, y: 0}
+        - {x: 0, y: 42.5}
+        - {x: -80.5, y: 0}
+      tessellationDetail: 0
+      bones: []
+      spriteID: a267455e379ced8499ea9ab2e0e577a4
+      internalID: 427395386
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Lobby_Tiles_19
+      rect:
+        serializedVersion: 2
+        x: 644
+        y: 7
+        width: 161
+        height: 85
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 0, y: -42.5}
+        - {x: 80.5, y: 0}
+        - {x: 0, y: 42.5}
+        - {x: -80.5, y: 0}
+      physicsShape:
+      - - {x: 0, y: -42.5}
+        - {x: 80.5, y: 0}
+        - {x: 0, y: 42.5}
+        - {x: -80.5, y: 0}
+      tessellationDetail: 0
+      bones: []
+      spriteID: e0dba75ce6ab8a6418b77845cd7d34ed
+      internalID: 604964729
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Lobby_Tiles_20
+      rect:
+        serializedVersion: 2
+        x: 805
+        y: 7
+        width: 161
+        height: 85
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 0, y: -42.5}
+        - {x: 80.5, y: 0}
+        - {x: 0, y: 42.5}
+        - {x: -80.5, y: 0}
+      physicsShape:
+      - - {x: 0, y: -42.5}
+        - {x: 80.5, y: 0}
+        - {x: 0, y: 42.5}
+        - {x: -80.5, y: 0}
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8a74511bbfae1794b992f45e1039eeea
+      internalID: -893670051
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Lobby_Tiles_21
+      rect:
+        serializedVersion: 2
+        x: 966
+        y: 7
+        width: 161
+        height: 85
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 0, y: -42.5}
+        - {x: 80.5, y: 0}
+        - {x: 0, y: 42.5}
+        - {x: -80.5, y: 0}
+      physicsShape:
+      - - {x: 0, y: -42.5}
+        - {x: 80.5, y: 0}
+        - {x: 0, y: 42.5}
+        - {x: -80.5, y: 0}
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7015d9e14de1bab41bfe79ea7e1a99eb
+      internalID: 1682395053
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Lobby_Tiles_22
+      rect:
+        serializedVersion: 2
+        x: 1127
+        y: 7
+        width: 161
+        height: 85
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 0, y: -42.5}
+        - {x: 80.5, y: 0}
+        - {x: 0, y: 42.5}
+        - {x: -80.5, y: 0}
+      physicsShape:
+      - - {x: 0, y: -42.5}
+        - {x: 80.5, y: 0}
+        - {x: 0, y: 42.5}
+        - {x: -80.5, y: 0}
+      tessellationDetail: 0
+      bones: []
+      spriteID: bb9ca7b5ca4b4bb4d82d5db22e7794fb
+      internalID: 1952093712
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5d8dc7fb12f6e074999c8a1bdba27333
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      Lobby_Tiles_0: 248162916
+      Lobby_Tiles_1: -79730610
+      Lobby_Tiles_10: 400813697
+      Lobby_Tiles_11: 651142852
+      Lobby_Tiles_12: -790458478
+      Lobby_Tiles_13: -941665288
+      Lobby_Tiles_14: 309778459
+      Lobby_Tiles_15: -1134418162
+      Lobby_Tiles_16: 1463857639
+      Lobby_Tiles_17: 101469999
+      Lobby_Tiles_18: 427395386
+      Lobby_Tiles_19: 604964729
+      Lobby_Tiles_2: -1328451391
+      Lobby_Tiles_20: -893670051
+      Lobby_Tiles_21: 1682395053
+      Lobby_Tiles_22: 1952093712
+      Lobby_Tiles_3: -1559045738
+      Lobby_Tiles_4: 1059599766
+      Lobby_Tiles_5: -953667755
+      Lobby_Tiles_6: 172045282
+      Lobby_Tiles_7: 905278414
+      Lobby_Tiles_8: 1249188523
+      Lobby_Tiles_9: -518264676
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
