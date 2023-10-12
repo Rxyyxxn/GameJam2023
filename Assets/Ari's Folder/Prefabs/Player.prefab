@@ -135,7 +135,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tilemap: {fileID: 0}
-  invUI: {fileID: 0}
+  invUI: {fileID: 3987467754955971256, guid: 25a9a35558b78bb47ab0f86ab42036fe, type: 3}
   raycastOBJ: {fileID: 743727257338232584}
   em: {fileID: 0}
   attakDmg: 0
@@ -236,6 +236,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6c23dcc25bd624a45984901f0e7b2755, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerGO: {fileID: 8962227361284427219}
 --- !u!114 &1616616358069552761
 MonoBehaviour:
   m_ObjectHideFlags: 0

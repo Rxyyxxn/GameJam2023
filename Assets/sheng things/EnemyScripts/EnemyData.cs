@@ -2,15 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.Tilemaps;
+using UnityEngine.Tilemaps; 
 
 public class EnemyData : MonoBehaviour
 {
-
     public int EnemyHP;
     public int EnemyAtk;
     public int EnemyTile;
-
     private EnemyState enemyState;
     private Direction enemyDirection;
     private Direction RayCastDir;
@@ -22,6 +20,18 @@ public class EnemyData : MonoBehaviour
     public Slider slider;
 
     public GameObject playerGO;
+
+    float movetimer = 0.0f;
+
+    public EnemyManager em;
+
+    bool iteminfront = false;
+
+    bool Moved = false;
+
+    bool movable = true;
+
+    public float attackPauseTimer;
 
     enum Direction
     {
@@ -35,7 +45,8 @@ public class EnemyData : MonoBehaviour
     {
         Idle,
         Chase,
-        Attack
+        Attack,
+        AttackPause
     }
 
     // Start is called before the first frame update
@@ -44,6 +55,7 @@ public class EnemyData : MonoBehaviour
         enemyState = EnemyState.Idle;
         enemyDirection = Direction.Up;
         enemyVec3 = tmap.WorldToCell(transform.position);
+        transform.position = tmap.CellToWorld(enemyVec3);
     }
 
     // Update is called once per frame
@@ -58,12 +70,9 @@ public class EnemyData : MonoBehaviour
 
         enemyVec3 = tmap.WorldToCell(transform.position);
 
-        Debug.Log("enemy "+enemyVec3);
+        //Debug.Log("enemy "+enemyVec3);
 
-        if (DetectionRange(playerGO.GetComponent<PlayerMove>().GetPlayerTilePos()))
-        {
-            Debug.Log("ISEEU");
-        }
+        DetectionRange(playerGO.GetComponent<PlayerMove>().GetPlayerTilePos());
 
         //if player in enemy detection range
         //run raycast
@@ -110,25 +119,19 @@ public class EnemyData : MonoBehaviour
         switch (enemyState)
         {
             case EnemyState.Idle:
+                if (DetectionRange(playerGO.GetComponent<PlayerMove>().GetPlayerTilePos()))
+                {
+                    enemyState = EnemyState.Chase;
+                }
                 break;
             case EnemyState.Chase:
                 //pathfind to player
+                ChaseTarget(playerGO.GetComponent<PlayerMove>().GetPlayerTilePos());
                 break;
             case EnemyState.Attack:
 
-                switch (enemyDirection)
-                {
-                    case Direction.Up:
-                        break;
-                    case Direction.Down:
-                        break;
-                    case Direction.Left:
-                        break;
-                    case Direction.Right:
-                        break;
-                    default:
-                        break;
-                }
+                break;
+            case EnemyState.AttackPause:
 
                 break;
             default:
@@ -141,7 +144,7 @@ public class EnemyData : MonoBehaviour
         Destroy(gameObject);
     }
 
-    public bool DetectionRange(Vector3 pos)
+    public bool DetectionRange(Vector3Int pos)
     {
         int x = enemyVec3.x;
         int y = enemyVec3.y;
@@ -152,12 +155,277 @@ public class EnemyData : MonoBehaviour
 
         if ((pos.x >= lowestx && pos.x <= highestx) && (pos.y >= lowesty && pos.y <= highesty))
         {
-            return true;
+            if (movable)
+            {
+                return true;
+            }
+            return false;
         }
         else
         {
             return false;
         }
 
+    }
+
+    public void ChaseTarget(Vector3Int pos)
+    {
+        
+        int xDiff = enemyVec3.x - pos.x;
+        int yDiff = enemyVec3.y - pos.y;
+        
+
+        if (xDiff < 0)
+        {
+            xDiff *= -1;
+        }
+
+        if (yDiff < 0)
+        {
+            yDiff *= -1;
+        }
+
+        //if player is right infront of enemy
+        if ((yDiff == 0 && xDiff == 1) || (yDiff == 1 && xDiff == 0))
+        {
+            Debug.Log("end");
+            enemyState = EnemyState.Attack;
+            return;
+        }
+        else if (yDiff != 0)
+        {
+            //moveY
+            yDiff = enemyVec3.y - pos.y;
+            if (yDiff < 0)
+            {
+                //move up
+                movetimer += Time.deltaTime;
+                if (movetimer > 1f)
+                {
+                    Vector3 nextPos = new Vector3(transform.position.x - 0.5f, transform.position.y + .25f, transform.position.z);
+                    Vector3Int nextTilePos = tmap.WorldToCell(nextPos);
+                    for (int i = 0; i < em.all_ItemData.Length; i++)
+                    {
+                        if (em.all_ItemData[i].itemVec3 == nextTilePos)
+                        {
+                            if (!Moved)
+                            {
+                                Moved = true;
+
+                                StartCoroutine("walkAround", 1);
+                            }
+
+                            return;
+                        }
+                    }
+                    //enemyVec3.y++;
+                    transform.position = nextPos;
+                    movetimer = .0f;
+                    return;
+                }
+            }
+            else if (yDiff > 0)
+            {
+                //move down
+                movetimer += Time.deltaTime;
+                if (movetimer > 1f)
+                {
+                    Vector3 nextPos = new Vector3(transform.position.x + 0.5f, transform.position.y - .25f, transform.position.z);
+                    Vector3Int nextTilePos = tmap.WorldToCell(nextPos);
+                    for (int i = 0; i < em.all_ItemData.Length; i++)
+                    {
+                        if (em.all_ItemData[i].itemVec3 == nextTilePos)
+                        {
+                            if (!Moved)
+                            {
+                                Moved = true;
+
+                                StartCoroutine("walkAround", 0);
+                            }
+                            return;
+                        }
+                    }
+                    //enemyVec3.y++;
+                    transform.position = nextPos;
+                    movetimer = .0f;    
+                    return;
+                }
+            }
+        }
+        else if (yDiff == 0)
+        {
+            xDiff = enemyVec3.x - pos.x;
+            if (xDiff < 0)
+            {
+                //move right
+                movetimer += Time.deltaTime;
+                if (movetimer > 1f)
+                {
+                    Vector3 nextPos = new Vector3(transform.position.x + 0.5f, transform.position.y + .25f, transform.position.z);
+                    Vector3Int nextTilePos = tmap.WorldToCell(nextPos);
+                    for (int i = 0; i < em.all_ItemData.Length; i++)
+                    {
+                        if (em.all_ItemData[i].itemVec3 == nextTilePos)
+                        {
+                            //StartCoroutine("walkAround", false);
+                            if (!Moved)
+                            {
+                                Moved = true;
+                                
+
+                                StartCoroutine("walkAround" , 1);
+                            }
+                            return;
+                        }
+                    }
+                    //enemyVec3.y++;
+                    transform.position = nextPos;
+                    movetimer = .0f;
+                    return;
+                }
+            }
+            else if (xDiff > 0)
+            {
+                //move left
+                movetimer += Time.deltaTime;
+                if (movetimer > 1f)
+                {
+                    Vector3 nextPos = new Vector3(transform.position.x - 0.5f, transform.position.y - .25f, transform.position.z);
+                    Vector3Int nextTilePos = tmap.WorldToCell(nextPos);
+                    for (int i = 0; i < em.all_ItemData.Length; i++)
+                    {
+                        if (em.all_ItemData[i].itemVec3 == nextTilePos)
+                        {
+                            if (!Moved)
+                            {
+                                Moved = true;
+                                
+
+                                StartCoroutine("walkAround" , 0);
+                            }
+                            return;
+                        }
+                    }
+                    transform.position = nextPos;
+                    movetimer = .0f;
+                    return;
+                }
+            }
+        }
+        //Debug.Log("xdiff : " + xDiff + " ,ydiff " + yDiff);
+    }
+
+    IEnumerator walkAround(int p)
+    {
+        Vector3 nextPos;
+        Vector3Int nextTilePos;
+        movable = false;
+
+        if (p == 1)
+        {
+            yield return new WaitForSeconds(1);
+
+            nextPos = new Vector3(transform.position.x + 0.5f, transform.position.y - .25f, transform.position.z);
+            nextTilePos = tmap.WorldToCell(nextPos);
+            if (nextTilePos == playerGO.GetComponent<PlayerMove>().GetPlayerTilePos())
+            {
+                yield break;
+                Moved = false;
+                movable = true;
+            }
+            transform.position = nextPos;
+
+            yield return new WaitForSeconds(1);
+
+            nextPos = new Vector3(transform.position.x + 0.5f, transform.position.y + .25f, transform.position.z);
+            nextTilePos = tmap.WorldToCell(nextPos);
+            if (nextTilePos == playerGO.GetComponent<PlayerMove>().GetPlayerTilePos())
+            {
+                yield break;
+                Moved = false;
+                movable = true;
+            }
+            transform.position = nextPos;
+
+
+            yield return new WaitForSeconds(1);
+
+            nextPos = new Vector3(transform.position.x + 0.5f, transform.position.y + .25f, transform.position.z);
+            nextTilePos = tmap.WorldToCell(nextPos);
+            if (nextTilePos == playerGO.GetComponent<PlayerMove>().GetPlayerTilePos())
+            {
+                yield break;
+                Moved = false;
+                movable = true;
+            }
+            transform.position = nextPos;
+
+            yield return new WaitForSeconds(1);
+
+            nextPos = new Vector3(transform.position.x - 0.5f, transform.position.y + .25f, transform.position.z);
+            nextTilePos = tmap.WorldToCell(nextPos);
+            if (nextTilePos == playerGO.GetComponent<PlayerMove>().GetPlayerTilePos())
+            {
+                yield break;
+                Moved = false;
+                movable = true;
+            }
+            transform.position = nextPos;
+        }
+
+        else
+        {
+            yield return new WaitForSeconds(1);
+
+            nextPos = new Vector3(transform.position.x - 0.5f, transform.position.y + .25f, transform.position.z);
+            nextTilePos = tmap.WorldToCell(nextPos);
+            if (nextTilePos == playerGO.GetComponent<PlayerMove>().GetPlayerTilePos())
+            {
+                yield break;
+                Moved = false;
+                movable = true;
+            }
+            transform.position = nextPos;
+
+            yield return new WaitForSeconds(1);
+
+            nextPos = new Vector3(transform.position.x - 0.5f, transform.position.y - .25f, transform.position.z);
+            nextTilePos = tmap.WorldToCell(nextPos);
+            if (nextTilePos == playerGO.GetComponent<PlayerMove>().GetPlayerTilePos())
+            {
+                yield break;
+                Moved = false;
+                movable = true;
+            }
+            transform.position = nextPos;
+
+
+            yield return new WaitForSeconds(1);
+
+            nextPos = new Vector3(transform.position.x - 0.5f, transform.position.y - .25f, transform.position.z);
+            nextTilePos = tmap.WorldToCell(nextPos);
+            if (nextTilePos == playerGO.GetComponent<PlayerMove>().GetPlayerTilePos())
+            {
+                yield break;
+                Moved = false;
+                movable = true;
+            }
+            transform.position = nextPos;
+
+            yield return new WaitForSeconds(1);
+
+            nextPos = new Vector3(transform.position.x + 0.5f, transform.position.y - .25f, transform.position.z);
+            nextTilePos = tmap.WorldToCell(nextPos);
+            if (nextTilePos == playerGO.GetComponent<PlayerMove>().GetPlayerTilePos())
+            {
+                yield break;
+                Moved = false;
+                movable = true;
+            }
+            transform.position = nextPos;
+        }
+
+        Moved = false;
+        movable = true;
     }
 }

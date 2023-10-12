@@ -27,6 +27,8 @@ public class InventorySystem : MonoBehaviour
         m_itemDictionary = new Dictionary<InventoryItemData, InventoryItem>();
         current = this;
 
+        //InventoryBar = GameObject.Find("InventoryBar").GetComponent<RectTransform>();
+
         DontDestroyOnLoad(this.gameObject);
     }
 
