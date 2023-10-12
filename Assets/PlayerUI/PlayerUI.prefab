@@ -110,8 +110,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 273, y: 729.19}
-  m_SizeDelta: {x: 100, y: 100}
+  m_AnchoredPosition: {x: 292.9973, y: 717.98}
+  m_SizeDelta: {x: 114.0053, y: 110.92}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1030921454475587514
 CanvasRenderer:
@@ -141,7 +141,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 6bd655aa7a121964b83020523f2d873f, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 963312e64c0b98448aa649fc5d5852c5, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -590,6 +590,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8f52526316c8f544999992a71a429f4c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  coins_Text: {fileID: 0}
 --- !u!1 &8959634150448526061
 GameObject:
   m_ObjectHideFlags: 0
