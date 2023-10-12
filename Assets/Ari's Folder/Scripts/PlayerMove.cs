@@ -14,8 +14,12 @@ public class PlayerMove : MonoBehaviour
     private Vector3Int playerPosOffset;
     [SerializeField] public GameObject raycastOBJ;
     public static PlayerMove instance;
+    public Vector3Int nextPlayerTilePos;
+
 
     public EnemyManager em;
+
+    bool up, down, left, right;
 
     public int attakDmg;
     private int OriginalAtkDmg;
@@ -48,6 +52,7 @@ public class PlayerMove : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //Initialise Tilemap
         if(tilemap!=null)
         {
 
@@ -59,7 +64,9 @@ public class PlayerMove : MonoBehaviour
 
         }
 
+        gameObject.transform.position = oldPosition;
 
+        nextPlayerTilePos = tilemap.WorldToCell(oldPosition);
 
         if (Input.GetKeyDown(KeyCode.G))
         {
@@ -84,8 +91,6 @@ public class PlayerMove : MonoBehaviour
 
         //PC Movement 
         {
-            gameObject.transform.position = oldPosition;
-
             if (Input.GetKeyDown(KeyCode.S))
             {
                 Down();
@@ -119,21 +124,82 @@ public class PlayerMove : MonoBehaviour
                 
                 if (endPos.x > startPos.x && endPos.y > startPos.y)
                 {
-                        Up();
+                    Up();
+                    up = true;
                 }
                 if (endPos.x < startPos.x && endPos.y < startPos.y)
                 {
-                        Down();
+                    Down();
+                    down = true;
                 }
                 if (endPos.x < startPos.x && endPos.y > startPos.y)
                 {
-                        Left();
+                    Left();
+                    left = true;
                 }
                 if (endPos.x > startPos.x && endPos.y < startPos.y)
                 {
-                        Right();
+                    Right();
+                    right = true;
                 }
                 
+            }
+            if (up)
+            {
+                Vector3 nextPos = new Vector2(oldPosition.x + 0.5f, oldPosition.y + 0.25f);
+                Vector3Int temp = tilemap.WorldToCell(nextPos);
+
+                oldPosition = Vector3.Lerp(oldPosition, nextPos, 2f * Time.deltaTime);
+
+                Vector3Int ifenfenf = tilemap.WorldToCell(oldPosition);
+                if (temp == ifenfenf)
+                {
+                    up = false;
+                }
+
+            }
+            if (down)
+            {
+                Vector2 nextPos = new Vector2(oldPosition.x - 0.5f, oldPosition.y - 0.25f);
+                Vector3Int temp = tilemap.WorldToCell(nextPos);
+
+                oldPosition = Vector3.Lerp(oldPosition, nextPos, 2f * Time.deltaTime);
+
+                Vector3Int ifenfenf = tilemap.WorldToCell(oldPosition);
+                if (temp == ifenfenf)
+                {
+                    down = false;
+                }
+
+            }
+            if (left)
+            {
+                Vector2 nextPos = new Vector2(oldPosition.x - 0.5f, oldPosition.y + 0.25f);
+                Vector3Int temp = tilemap.WorldToCell(nextPos);
+
+                oldPosition = Vector3.Lerp(oldPosition, nextPos, 2f * Time.deltaTime);
+
+                Vector3Int ifenfenf = tilemap.WorldToCell(oldPosition);
+                if (temp == ifenfenf)
+                {
+                    left = false;
+                }
+
+            }
+            if (right)
+            {
+                Vector3 nextPos = new Vector2(oldPosition.x + 0.5f, oldPosition.y - 0.25f);
+                Vector3Int temp = tilemap.WorldToCell(nextPos);
+
+
+                oldPosition = Vector3.Lerp(oldPosition, nextPos, 2f * Time.deltaTime);
+
+                Vector3Int ifenfenf = tilemap.WorldToCell(oldPosition);
+                if (temp == ifenfenf)
+                {
+                    right = false;
+                }
+
             }
         }
 
@@ -160,6 +226,10 @@ public class PlayerMove : MonoBehaviour
         if (tilemap.HasTile(temp))
         {
             //oldPosition = Vector3.Slerp(oldPosition, nextPos, 2f * Time.deltaTime);
+            //oldPosition.x += -0.5f;
+            //oldPosition.y += -0.25f;
+            down = true;
+
             oldPosition.x += -0.5f;
             oldPosition.y += -0.25f;
             RollDice(0,6);
@@ -187,6 +257,10 @@ public class PlayerMove : MonoBehaviour
         if (tilemap.HasTile(temp))
         {
             //oldPosition = Vector3.Slerp(oldPosition, nextPos, 2f * Time.deltaTime);
+
+            //oldPosition.x += 0.5f;
+            //oldPosition.y += 0.25f;
+            up = true;
 
             oldPosition.x += 0.5f;
             oldPosition.y += 0.25f;
@@ -220,6 +294,10 @@ public class PlayerMove : MonoBehaviour
         {
             //oldPosition = Vector3.Slerp(oldPosition, nextPos, 2f * Time.deltaTime);
 
+            //oldPosition.x += -0.5f;
+            //oldPosition.y += 0.25f;
+            left = true;
+
             oldPosition.x += -0.5f;
             oldPosition.y += 0.25f;
             RollDice(0,6);
@@ -251,6 +329,10 @@ public class PlayerMove : MonoBehaviour
         if (tilemap.HasTile(temp))
         {
             //oldPosition = Vector3.Slerp(oldPosition, nextPos, 2f * Time.deltaTime);
+
+            //oldPosition.x += 0.5f;
+            //oldPosition.y += -0.25f;
+            right = true;
 
             oldPosition.x += 0.5f;
             oldPosition.y += -0.25f;
