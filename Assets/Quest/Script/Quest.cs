@@ -2,7 +2,7 @@
 public class Quest
 {
 
-    public string questDescription;
+    public string Title;
     public string description;
     public string itemname;
     public int reward;
