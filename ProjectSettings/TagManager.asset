@@ -11,6 +11,11 @@ TagManager:
   - InventoryUI
   - OpenBtn
   - CloseBtn
+  - Dice
+  - Shop
+  - Quest
+  - ShopCanvas
+  - QuestCanvas
   layers:
   - Default
   - TransparentFX
