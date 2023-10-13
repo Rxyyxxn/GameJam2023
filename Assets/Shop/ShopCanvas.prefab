@@ -40,7 +40,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 1.8338928, y: -365.99994}
+  m_AnchoredPosition: {x: 1.8338623, y: -365.99994}
   m_SizeDelta: {x: -88.489, y: -1585.8422}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2745540435874065151
@@ -675,7 +675,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -5.3324, y: -671}
+  m_AnchoredPosition: {x: -5.3323975, y: -670.99994}
   m_SizeDelta: {x: -74.156, y: -1333.4717}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &4828516231012693459
@@ -781,7 +781,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: EQUIP
+  m_text: EQUIPPED
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: bb6a57bfc8237c8458d11bf0fbdaf3f0, type: 2}
   m_sharedMaterial: {fileID: -3476047143608355052, guid: bb6a57bfc8237c8458d11bf0fbdaf3f0,
@@ -971,7 +971,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 6386100402569004497}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 4102261986635123916}
+        m_TargetAssemblyTypeName: ShopManager, Assembly-CSharp
+        m_MethodName: ButtonBuy
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &1556046159477980606
 GameObject:
   m_ObjectHideFlags: 0
@@ -1092,7 +1104,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 4429668737402638889}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 4102261986635123916}
+        m_TargetAssemblyTypeName: ShopManager, Assembly-CSharp
+        m_MethodName: ButtonEquip
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &1874474341015680031
 GameObject:
   m_ObjectHideFlags: 0
@@ -1530,7 +1554,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.3025, y: 0.5}
   m_AnchorMax: {x: 0.68500006, y: 0.6914453}
-  m_AnchoredPosition: {x: 5, y: 4.4999847}
+  m_AnchoredPosition: {x: 5, y: 4.5}
   m_SizeDelta: {x: 16.731998, y: -11.7113}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2425689846650512031
@@ -1716,6 +1740,7 @@ GameObject:
   - component: {fileID: 4444539057712641310}
   - component: {fileID: 4305906156610066506}
   - component: {fileID: 4102261986635123916}
+  - component: {fileID: 6340001359840299323}
   m_Layer: 5
   m_Name: ShopCanvas
   m_TagString: Untagged
@@ -1782,7 +1807,7 @@ MonoBehaviour:
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
   m_ReferenceResolution: {x: 800, y: 600}
-  m_ScreenMatchMode: 0
+  m_ScreenMatchMode: 1
   m_MatchWidthOrHeight: 0
   m_PhysicalUnit: 3
   m_FallbackScreenDPI: 96
@@ -1818,6 +1843,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8dc15a957ba9b64419ed6396cc5ee39b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  availableDices:
+  - DiceType: Default 6
+    price: 0
+    IsBought: 1
+    IsEquipped: 1
+  - DiceType: Variant 6
+    price: 100
+    IsBought: 0
+    IsEquipped: 0
+  - DiceType: Default 8
+    price: 150
+    IsBought: 0
+    IsEquipped: 0
+  - DiceType: Variant 8
+    price: 200
+    IsBought: 0
+    IsEquipped: 0
   description:
   - Default 6 Face dice
   - Variant 6 Face dice
@@ -1825,6 +1867,8 @@ MonoBehaviour:
   - Variant 8 Face dice
   descrip: {fileID: 8659105612557040690}
   Coins: {fileID: 6110863176183327155}
+  equipText: {fileID: 568490352246996108}
+  priceText: {fileID: 2107487452616506913}
   diceimages:
   - {fileID: 21300000, guid: 90f320611b469984b93b8c2423f697b6, type: 3}
   - {fileID: 21300000, guid: 44935fc992ff9084fbccc7242a7f9b01, type: 3}
@@ -1832,6 +1876,108 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 2b65955a85352d74bacb84aa5d1360a2, type: 3}
   diceimage: {fileID: 4701219347883312298}
   currdice: 0
+  previousdice: 0
+  buyButton: {fileID: 1463391812081346052}
+  equipButton: {fileID: 1556046159477980606}
+  audioClipArray:
+  - {fileID: 8300000, guid: 2c06dad06eb5e5d41af72aa06c1aaede, type: 3}
+  - {fileID: 8300000, guid: 1dfd87b8e2b7bd944be86fd8ab4dc750, type: 3}
+--- !u!82 &6340001359840299323
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4181101807438070446}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &4538427058724940756
 GameObject:
   m_ObjectHideFlags: 0
@@ -3022,10 +3168,10 @@ RectTransform:
   - {fileID: 453004939311433792}
   m_Father: {fileID: 4829164751540664141}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.0024872, y: -0.0077057}
-  m_SizeDelta: {x: 800, y: 1730.9}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &3655450634320712478
 CanvasRenderer:
