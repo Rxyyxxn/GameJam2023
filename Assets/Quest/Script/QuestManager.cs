@@ -25,7 +25,7 @@ public class QuestManager : MonoBehaviour
     void Start()
     {
         ItemText.SetActive(false);
-        Questcanvas.SetActive(true);
+        Questcanvas.SetActive(false);
         AssignRandomQuests();
     }
 
