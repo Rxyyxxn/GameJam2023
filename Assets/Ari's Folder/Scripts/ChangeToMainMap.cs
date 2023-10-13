@@ -26,6 +26,7 @@ public class ChangeToMainMap : MonoBehaviour
     }
     public void OnButtonChangeScene()
     {
+        PlayerMove.instance.unactiveInvUI = true;
         SceneManager.LoadScene(sceneName);
     }
 }

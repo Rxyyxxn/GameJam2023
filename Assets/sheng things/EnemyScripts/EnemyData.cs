@@ -56,17 +56,25 @@ public class EnemyData : MonoBehaviour
 
     // Start is called before the first frame update
     void Start()
-    {
+    {       
+        tmap = GameObject.FindGameObjectWithTag("GroundTile").GetComponent<Tilemap>();
         enemyState = EnemyState.Idle;
         enemyDirection = Direction.Up;
         enemyVec3 = tmap.WorldToCell(transform.position);
         transform.position = tmap.CellToWorld(enemyVec3);
         currentSound = GetComponent<AudioSource>();
+        playerGO = GameObject.FindGameObjectWithTag("Player");
+
     }
 
     // Update is called once per frame
     void Update()
     {
+        tmap = GameObject.FindGameObjectWithTag("GroundTile").GetComponent<Tilemap>();
+        playerGO = GameObject.FindGameObjectWithTag("Player");
+        em = GameObject.FindObjectOfType<EnemyManager>();
+
+
         slider.value = EnemyHP;
 
         if (EnemyHP <= 0)

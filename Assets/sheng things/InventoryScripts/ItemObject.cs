@@ -15,11 +15,17 @@ public class ItemObject : MonoBehaviour
         DontDestroyOnLoad(this.gameObject);
         itemVec3 = tmap.WorldToCell(transform.position);
         transform.position = tmap.CellToWorld(itemVec3);
+        tmap = GameObject.FindGameObjectWithTag("GroundTile").GetComponent<Tilemap>();
     }
 
     public void OnHandlePickupItem()
     {
         InventorySystem.current.Add(refItem);
         Destroy(gameObject);
+    }
+    private void Update()
+    {
+        tmap = GameObject.FindGameObjectWithTag("GroundTile").GetComponent<Tilemap>();
+
     }
 }

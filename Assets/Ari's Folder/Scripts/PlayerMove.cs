@@ -35,6 +35,8 @@ public class PlayerMove : MonoBehaviour
     public AudioClip playerCollectItem;
     public AudioClip playerEnd;
 
+    public bool unactiveInvUI = false;
+
     private void Awake()
     {
         if (instance == null)
@@ -61,6 +63,7 @@ public class PlayerMove : MonoBehaviour
         animator = gameObject.GetComponent<Animator>();
         currentSound = GetComponent<AudioSource>();
     }
+
     // Update is called once per frame
     void Update()
     {

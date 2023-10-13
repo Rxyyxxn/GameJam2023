@@ -24,6 +24,12 @@ public class Spawner : MonoBehaviour
 
     public List<Vector3> availablePlaces;
 
+    public int spawnAmount;
+
+    private void Awake()
+    {
+        CalculateWeights();
+    }
     void Start()
     {
         availablePlaces = new List<Vector3>();
@@ -45,10 +51,10 @@ public class Spawner : MonoBehaviour
             Debug.Log(item);
         }
         //Test
-        for (int i = 0; i < 10; i++)
+        for (int i = 0; i < spawnAmount; i++)
         {
             int randomPos = Random.Range(0, availablePlaces.Count - 1);
-            RandomSpawn(new Vector3(availablePlaces[randomPos].x, availablePlaces[randomPos].y));
+            RandomSpawn(new Vector3(availablePlaces[randomPos].x, availablePlaces[randomPos].y + 0.5f));
         }
     }
 
