@@ -9,9 +9,7 @@ public class QuestManager : MonoBehaviour
     private int currentQuestIndex; // Variable to store the current quest index
 
     public List<Quest> quests;
-    public List<Image> questImages;
 
-    public QuestDetailsOverlay questDetailsOverlay; // Reference to the QuestDetailsOverlay script
     private InventorySystem inventorySystem;
 
     public GameObject ItemText;
@@ -28,7 +26,7 @@ public class QuestManager : MonoBehaviour
     {
         inventorySystem = InventorySystem.current;
         Debug.Log(timer);
-        if (questDetailsOverlay.completionSlider.value == questDetailsOverlay.completionSlider.maxValue)
+        if (//)
         {
             // If enough materials then complete the quest and reload now one, reset slider
             if (inventorySystem.ItemCount(quests[currentQuestIndex].itemname) >= quests[currentQuestIndex].requiredItems)
@@ -36,16 +34,13 @@ public class QuestManager : MonoBehaviour
                 //minus item from stack
                 inventorySystem.Remove(inventorySystem.GetItemDataThrough_ID(quests[currentQuestIndex].QuestIndex));
 
-                questDetailsOverlay.HideQuestDetails();
                 CompleteQuest(currentQuestIndex); // Get quest index reference
-                questDetailsOverlay.completionSlider.value = 0;
             }
             // Else if not enough material, text appear showing not enough material and slider goes back to 0
             else if (inventorySystem.ItemCount(quests[currentQuestIndex].itemname)< quests[currentQuestIndex].requiredItems)
             {
                 ItemText.SetActive(true);
-                itemactive = true;
-                questDetailsOverlay.completionSlider.value = 0;       
+                itemactive = true;     
             }
         }
 
@@ -65,17 +60,8 @@ public class QuestManager : MonoBehaviour
     {
         ShuffleQuests();
 
-        for (int i = 0; i < questImages.Count; i++)
-        {
-            if (i < quests.Count)
-            {
-                questImages[i].GetComponentInChildren<TextMeshProUGUI>().text = quests[i].questDescription;
-            }
-            else
-            {
-                questImages[i].gameObject.SetActive(false);
-            }
-        }
+        quests[quest].
+        
     }
 
     void ShuffleQuests()
@@ -91,23 +77,23 @@ public class QuestManager : MonoBehaviour
             // Implement logic to reward the player based on the quest completed (e.g., add currency, experience points, etc.)
 
             quests[questIndex] = GetRandomQuest();
-            questImages[questIndex].GetComponentInChildren<TextMeshProUGUI>().text = quests[questIndex].questDescription;
+            
+        }
+    }
+
+    public void CompleteButton()
+    {
+        if(inventorySystem.ItemCount(quests[currentQuestIndex].itemname)>= quests[currentQuestIndex].requiredItems)
+        {
+            //minus item from stack
+            inventorySystem.Remove(inventorySystem.GetItemDataThrough_ID(quests[currentQuestIndex].QuestIndex));
+
+            CompleteQuest(currentQuestIndex); // Get quest index reference
         }
     }
 
     Quest GetRandomQuest()
     {
         return quests[Random.Range(0, quests.Count)];
-    }
-
-    public void OnQuestImageClick(int questIndex)
-    {
-        if (questIndex >= 0 && questIndex < quests.Count)
-        {
-            currentQuestIndex = questIndex; // Store the current quest index
-            string selectedQuestTitle = quests[questIndex].questDescription;
-            string selectedQuestDescription = quests[questIndex].description;
-            questDetailsOverlay.ShowQuestDetails(selectedQuestTitle, selectedQuestDescription);
-        }
     }
 }
