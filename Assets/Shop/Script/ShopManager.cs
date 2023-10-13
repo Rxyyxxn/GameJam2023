@@ -8,16 +8,16 @@ public class ShopManager : MonoBehaviour
 {
     public Dice[] availableDices;
     public string[] description;
-    public TextMeshProUGUI descrip, Coins;
+    public TextMeshProUGUI descrip, Coins, equipText, priceText;
     public Sprite[] diceimages;
     public Image diceimage;
     public static ShopManager instance;
     private Player player = new Player();
-    public int currdice;
+    public int currdice,previousdice;
+    public GameObject buyButton,equipButton;
 
-    public Button buyButton;
-    public GameObject[] diceObjects;
-    private int unlockedDiceIndex = 0;
+    public AudioClip[] audioClipArray;
+    private AudioSource source;
 
     private void Awake()
     {
@@ -35,54 +35,66 @@ public class ShopManager : MonoBehaviour
     public void close()
     {
         gameObject.SetActive(false);
+
+        source.clip = audioClipArray[1];
+        source.PlayOneShot(source.clip);
     }
 
     private void Start()
     {
-        gameObject.SetActive(false);
+        source = gameObject.GetComponent<AudioSource>();
 
-        UpdateUI();
-        buyButton.onClick.AddListener(BuyDice);
+        player.coins = 100;
+        gameObject.SetActive(false);
+        availableDices[0].IsEquipped=true;
+        previousdice = 0;
+        currdice = 0;
     }
 
     private void Update()
     {
         Coins.text = player.coins.ToString();
+        UpdateUI(currdice);
     }
 
     public void D6()
     {
         diceimage.sprite = diceimages[0];
         descrip.text = description[0];
-        currdice = 6;
+        previousdice = currdice;
+        currdice = 0;
     }
 
     public void D8()
     {
         diceimage.sprite = diceimages[2];
         descrip.text = description[2];
-        currdice = 8;
+        previousdice = currdice;
+        currdice = 2;
     }
 
     public void D10()
     {
         diceimage.sprite = diceimages[4];
         descrip.text = description[4];
-        currdice = 10;
+        previousdice = currdice;
+        currdice = 4;
     }
 
     public void D12()
     {
         diceimage.sprite = diceimages[6];
         descrip.text = description[6];
-        currdice = 12;
+        previousdice = currdice;
+        currdice = 6;
     }
 
     public void D20()
     {
         diceimage.sprite = diceimages[8];
         descrip.text = description[8];
-        currdice = 20;
+        previousdice = currdice;
+        currdice = 8;
     }
 
     public void VarButton()
@@ -99,29 +111,39 @@ public class ShopManager : MonoBehaviour
     {
         switch (DiceNum)
         {
-            case 6:
+            case 0:
                 diceimage.sprite = diceimages[1];
                 descrip.text = description[1];
+                previousdice = currdice;
+                currdice = 1;
+                break;
+
+            case 2:
+                diceimage.sprite = diceimages[3];
+                descrip.text = description[3];
+                previousdice = currdice;
+                currdice = 3;
+                break;
+
+            case 4:
+                diceimage.sprite = diceimages[5];
+                descrip.text = description[5];
+                previousdice = currdice;
+                currdice = 5;
+                break;
+
+            case 6:
+                diceimage.sprite = diceimages[7];
+                descrip.text = description[7];
+                previousdice = currdice;
+                currdice = 7;
                 break;
 
             case 8:
-                diceimage.sprite = diceimages[3];
-                descrip.text = description[3];
-                break;
-
-            case 10:
-                diceimage.sprite = diceimages[5];
-                descrip.text = description[5];
-                break;
-
-            case 12:
-                diceimage.sprite = diceimages[7];
-                descrip.text = description[7];
-                break;
-
-            case 20:
                 diceimage.sprite = diceimages[8];
                 descrip.text = description[8];
+                previousdice = currdice;
+                currdice = 9;
                 break;
 
             default:
@@ -133,29 +155,39 @@ public class ShopManager : MonoBehaviour
     {
         switch (DiceNum)
         {
-            case 6:
+            case 1:
                 diceimage.sprite = diceimages[0];
                 descrip.text = description[0];
+                previousdice = currdice;
+                currdice = 0;
                 break;
 
-            case 8:
+            case 3:
                 diceimage.sprite = diceimages[2];
                 descrip.text = description[2];
+                previousdice = currdice;
+                currdice = 2;
                 break;
 
-            case 10:
+            case 5:
                 diceimage.sprite = diceimages[4];
                 descrip.text = description[4];
+                previousdice = currdice;
+                currdice = 4;
                 break;
 
-            case 12:
+            case 7:
                 diceimage.sprite = diceimages[6];
                 descrip.text = description[6];
+                previousdice = currdice;
+                currdice = 6;
                 break;
 
-            case 20:
+            case 9:
                 diceimage.sprite = diceimages[8];
                 descrip.text = description[8];
+                previousdice = currdice;
+                currdice = 8;
                 break;
 
             default:
@@ -163,24 +195,58 @@ public class ShopManager : MonoBehaviour
         }
     }
 
-    private void UpdateUI()
+    public void ButtonBuy()
     {
-        Coins.text = "Coins: " + player.coins.ToString();
-        //buyButton.interactable = (unlockedDiceIndex < diceObjects.Length) && (player.coins >= availableDices[unlockedDiceIndex].price);
+        source.clip = audioClipArray[0];
+        source.PlayOneShot(source.clip);
+
+        Buy(currdice);
     }
 
-    private void BuyDice()
+    public void Buy(int DiceNum)
     {
-        if (unlockedDiceIndex < diceObjects.Length && player.coins >= availableDices[unlockedDiceIndex].price)
+        if(player.coins>= availableDices[DiceNum].price)
         {
-            // Deduct coins and unlock the next dice
-            player.coins -= availableDices[unlockedDiceIndex].price;
-            availableDices[unlockedDiceIndex].IsBought = true;
-            unlockedDiceIndex++;
+            player.coins -= availableDices[DiceNum].price;
+            availableDices[DiceNum].IsBought = true;
+        }
+    }
 
-            // Set the unlocked dice active and update UI
-            diceObjects[unlockedDiceIndex - 1].SetActive(true);
-            UpdateUI();
+    public void ButtonEquip()
+    {
+        source.clip = audioClipArray[1];
+        source.PlayOneShot(source.clip);
+
+        Equip(currdice,previousdice);
+    }
+
+    public void Equip(int DiceNum,int PrevDice)
+    {
+        availableDices[DiceNum].IsEquipped = true;
+        availableDices[PrevDice].IsEquipped = false;
+    }
+
+
+
+    public void UpdateUI(int DiceNum)
+    {
+        priceText.text = availableDices[DiceNum].price.ToString();
+        if(availableDices[DiceNum].IsBought == true && availableDices[DiceNum].IsEquipped==true)
+        {
+            buyButton.SetActive(false);
+            equipButton.SetActive(true);
+            equipText.text = "equipped";
+        }
+        else if(availableDices[DiceNum].IsBought == true && availableDices[DiceNum].IsEquipped == false)
+        {
+            buyButton.SetActive(false);
+            equipButton.SetActive(true);
+            equipText.text = "equip";
+        }
+        else if (availableDices[DiceNum].IsBought == false)
+        {
+            buyButton.SetActive(true);
+            equipButton.SetActive(false);
         }
     }
 }
