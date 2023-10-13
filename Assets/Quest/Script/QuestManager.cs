@@ -9,12 +9,18 @@ public class QuestManager : MonoBehaviour
 
     public List<Quest> quests;
     private InventorySystem inventorySystem;
-    public GameObject ItemText,Questcanvas;
+    public GameObject ItemText,Questcanvas,sign,Clicktosign;
     public Player player = new Player();
     private int currentQuestIndex, prevquestindex; // Variable to store the current quest index
-    float timer;
+    float timer,signTimer;
     bool itemactive = false;
     public TextMeshProUGUI Title, description;
+
+    IEnumerator Wait()
+    {
+        yield return new WaitForSeconds(1.5f);
+        AssignRandomQuests();
+    }
 
     void Start()
     {
@@ -27,7 +33,7 @@ public class QuestManager : MonoBehaviour
     {
         inventorySystem = InventorySystem.current;
 
-        Debug.Log(timer);
+        //Debug.Log(timer);
         if (itemactive == true && timer <= 1.5)
         {
             timer += Time.deltaTime;
@@ -56,6 +62,8 @@ public class QuestManager : MonoBehaviour
         description.text = quests[currentQuestIndex].description;
         prevquestindex = currentQuestIndex;
 
+        Clicktosign.SetActive(true);
+        sign.SetActive(false);
     }
 
     public void CompleteButton()
@@ -66,10 +74,16 @@ public class QuestManager : MonoBehaviour
             //minus item from stack
             inventorySystem.Remove(inventorySystem.GetItemDataThrough_ID(quests[currentQuestIndex].QuestIndex));
             player.coins += quests[currentQuestIndex].reward;
-            AssignRandomQuests();
+            Clicktosign.SetActive(false);
+            sign.SetActive(true);
+
+            StartCoroutine(Wait());
+
         }
         else
         {
+            sign.SetActive(false);
+            Clicktosign.SetActive(true);
             ItemText.SetActive(true);
             itemactive = true;
         }

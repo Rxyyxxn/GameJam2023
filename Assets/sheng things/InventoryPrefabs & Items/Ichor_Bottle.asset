@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e42613e2652fd034fbb9b37d11f14e15, type: 3}
   m_Name: Ichor_Bottle
   m_EditorClassIdentifier: 
-  id: 1
-  displayName: Feather
-  icon: {fileID: 21300000, guid: b6227a719015bc74d97e1b2b292b1c2b, type: 3}
+  id: 2
+  displayName: Bottle
+  icon: {fileID: 21300000, guid: 3c968f076a2cccc47adcb19b3b159fe9, type: 3}
   prefab: {fileID: 0}

@@ -720,13 +720,13 @@ MonoBehaviour:
   quests:
   - Title: Explore the world
     description: 'Description: Enter and explore the outside world '
-    itemname: world
+    itemname: Carrot
     reward: 10
     QuestIndex: 0
     requiredItems: 0
   - Title: Coleect potion
     description: 'Description: Potions are nedded to power up dice'
-    itemname: Potion
+    itemname: Bottle
     reward: 10
     QuestIndex: 1
     requiredItems: 1
@@ -738,6 +738,8 @@ MonoBehaviour:
     requiredItems: 1
   ItemText: {fileID: 455076743}
   Questcanvas: {fileID: 591540471540276350}
+  sign: {fileID: 6411016586804009572}
+  Clicktosign: {fileID: 4032784769872344657}
   player:
     coins: 0
     Health: 0
@@ -1219,8 +1221,8 @@ MonoBehaviour:
     m_NormalColor: {r: 0, g: 0, b: 0, a: 1}
     m_HighlightedColor: {r: 0.6509434, g: 0.6509434, b: 0.6509434, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
-    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 0}
-    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0}
+    m_SelectedColor: {r: 0, g: 0, b: 0, a: 1}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_SpriteState:
