@@ -64,6 +64,7 @@ public class EnemyData : MonoBehaviour
         transform.position = tmap.CellToWorld(enemyVec3);
         currentSound = GetComponent<AudioSource>();
         playerGO = GameObject.FindGameObjectWithTag("Player");
+        slider.maxValue = EnemyHP;
 
     }
 
@@ -74,6 +75,8 @@ public class EnemyData : MonoBehaviour
         playerGO = GameObject.FindGameObjectWithTag("Player");
         em = GameObject.FindObjectOfType<EnemyManager>();
 
+
+        Debug.Log("run");
 
         slider.value = EnemyHP;
 

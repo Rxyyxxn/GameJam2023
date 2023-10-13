@@ -443,7 +443,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6502719b3ce48d840ba481e510015512, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  EnemyHP: 5
+  EnemyHP: 7
   EnemyAtk: 1
   EnemyTile: 0
   tmap: {fileID: 0}
@@ -451,7 +451,7 @@ MonoBehaviour:
   slider: {fileID: 4820748737890644457}
   playerGO: {fileID: 0}
   em: {fileID: 0}
-  attackPauseTimer: 0
+  attackPauseTimer: 1
   enemyAtkSound: {fileID: 8300000, guid: be8d3371603aaf948a305b5fc4c1d974, type: 3}
   enemyDieSound: {fileID: 8300000, guid: 8634fb96ca241ce45bcf31d2c2d6b290, type: 3}
 --- !u!82 &166704082848517672

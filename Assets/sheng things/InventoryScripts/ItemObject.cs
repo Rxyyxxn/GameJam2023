@@ -13,9 +13,9 @@ public class ItemObject : MonoBehaviour
     private void Awake()
     {
         DontDestroyOnLoad(this.gameObject);
+        tmap = GameObject.FindGameObjectWithTag("GroundTile").GetComponent<Tilemap>();
         itemVec3 = tmap.WorldToCell(transform.position);
         transform.position = tmap.CellToWorld(itemVec3);
-        tmap = GameObject.FindGameObjectWithTag("GroundTile").GetComponent<Tilemap>();
     }
 
     public void OnHandlePickupItem()

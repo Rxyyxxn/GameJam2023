@@ -13,6 +13,10 @@ public class EnemyManager : MonoBehaviour
         all_enemyData = FindObjectsOfType<EnemyData>();
         all_ItemData = FindObjectsOfType<ItemObject>();
 
-        //Debug.Log(all_ItemData[1].itemVec3);
+        for (int i = 0; i < all_enemyData.Length; i++)
+        {
+            Debug.Log("enemy " + all_enemyData[0].enemyVec3);
+        }
+        
     }
 }

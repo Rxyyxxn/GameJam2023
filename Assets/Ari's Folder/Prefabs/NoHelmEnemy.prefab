@@ -443,8 +443,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6502719b3ce48d840ba481e510015512, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  EnemyHP: 5
-  EnemyAtk: 1
+  EnemyHP: 3
+  EnemyAtk: 2
   EnemyTile: 0
   tmap: {fileID: 0}
   enemyVec3: {x: 0, y: 0, z: 0}

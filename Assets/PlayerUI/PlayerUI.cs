@@ -7,7 +7,8 @@ public class PlayerUI : MonoBehaviour
 {
     public static PlayerUI instance;
     private Player player=new Player();
-    public TextMeshProUGUI coins_Text; 
+    public TextMeshProUGUI coins_Text;
+    public GameObject settings;
     private void Awake()
     {
         if (instance == null)
@@ -31,5 +32,11 @@ public class PlayerUI : MonoBehaviour
     void Update()
     {
         coins_Text.text = player.coins.ToString();
+        
+    }
+
+    public void OnSettingsButton()
+    {
+        SettingsManager.instance.gameObject.SetActive(true);
     }
 }

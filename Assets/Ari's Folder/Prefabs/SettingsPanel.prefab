@@ -425,6 +425,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   KMSButton: {fileID: 1757728207340131529}
   settingsMenu: {fileID: 2147181147285757319}
+  settingsPanel: {fileID: 2147181147285757319}
 --- !u!1 &1757728207340131529
 GameObject:
   m_ObjectHideFlags: 0

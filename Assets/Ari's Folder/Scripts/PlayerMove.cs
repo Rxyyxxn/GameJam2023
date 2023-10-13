@@ -110,6 +110,8 @@ public class PlayerMove : MonoBehaviour
     {
         if (SceneManager.GetActiveScene() == SceneManager.GetSceneByBuildIndex(4))
         {
+            tilemap = GameObject.FindGameObjectWithTag("GroundTile").GetComponent<Tilemap>();
+            em = GameObject.FindObjectOfType<EnemyManager>();
             UIConnector = GameObject.FindGameObjectWithTag("OpenBtn");
             closeButton = GameObject.FindGameObjectWithTag("CloseBtn").GetComponent<Button>();
             Button CloseButton = closeButton.GetComponent<Button>();
@@ -126,7 +128,7 @@ public class PlayerMove : MonoBehaviour
             }
         }
 
-        Debug.Log(UIConnector.transform.localPosition.x +", "+ minX);
+        Debug.Log(GetPlayerTilePos());
 
         //Initialise Tilemap
         if(tilemap!=null)
@@ -138,6 +140,11 @@ public class PlayerMove : MonoBehaviour
         {
             tilemap = GameObject.FindGameObjectWithTag("GroundTile").GetComponent<Tilemap>();
 
+        }
+        if (dice == null)
+        {
+            dice = GameObject.FindGameObjectWithTag("Dice");
+            diceAnim = dice.GetComponent<Animator>();
         }
 
         gameObject.transform.position = oldPosition;
@@ -247,6 +254,8 @@ public class PlayerMove : MonoBehaviour
                 if (temp == ifenfenf)
                 {
                     animator.SetBool("IsJumping", false);
+                    animator.SetTrigger("IsReroll");
+
 
                     up = false;
                 }
@@ -265,6 +274,8 @@ public class PlayerMove : MonoBehaviour
                 if (temp == ifenfenf)
                 {
                     animator.SetBool("IsJumping", false);
+                    animator.SetTrigger("IsReroll");
+
 
                     down = false;
                 }
@@ -283,6 +294,8 @@ public class PlayerMove : MonoBehaviour
                 if (temp == ifenfenf)
                 {
                     animator.SetBool("IsJumping", false);
+                    animator.SetTrigger("IsReroll");
+
 
                     left = false;
                 }
@@ -302,6 +315,8 @@ public class PlayerMove : MonoBehaviour
                 if (temp == ifenfenf)
                 {
                     animator.SetBool("IsJumping", false);
+                    animator.SetTrigger("IsReroll");
+
 
                     right = false;
                 }
@@ -330,6 +345,8 @@ public class PlayerMove : MonoBehaviour
                     em.all_enemyData[i].EnemyHP -= attakDmg;
                     attakDmg = OriginalAtkDmg;
                     currentSound.clip = playerAtk;
+                    animator.SetTrigger("IsAttacking");
+
                     currentSound.Play();
                     return;
                 }
@@ -340,6 +357,8 @@ public class PlayerMove : MonoBehaviour
         if (tilemap.HasTile(temp))
         {
             down = true;
+            //oldPosition.x += -0.5f;
+            //oldPosition.y +=- 0.25f;
             RollDice(0,6);
             currentSound.clip = playerMove;
             currentSound.Play();
@@ -350,17 +369,18 @@ public class PlayerMove : MonoBehaviour
     {
         Vector2 nextPos = new Vector2(oldPosition.x + 0.5f, oldPosition.y + 0.25f);
         Vector3Int temp = tilemap.WorldToCell(nextPos);
-
         if (em != null)
         {
             for (int i = 0; i < em.all_enemyData.Length; i++)
             {
                 if (em.all_enemyData[i].enemyVec3 == temp)
                 {
+                    Debug.Log("temp " + temp);
                     em.all_enemyData[i].EnemyHP -= attakDmg;
                     attakDmg = OriginalAtkDmg;
                     currentSound.clip = playerAtk;
                     currentSound.Play();
+                    animator.SetTrigger("IsAttacking");
                     return;
                 }
             }
@@ -369,6 +389,8 @@ public class PlayerMove : MonoBehaviour
         if (tilemap.HasTile(temp))
         {
             up = true;
+            //oldPosition.x += 0.5f;
+            //oldPosition.y += 0.25f;
             RollDice(0,6);
             currentSound.clip = playerMove;
             currentSound.Play();
@@ -389,6 +411,7 @@ public class PlayerMove : MonoBehaviour
                     em.all_enemyData[i].EnemyHP -= attakDmg;
                     attakDmg = OriginalAtkDmg;
                     currentSound.clip = playerAtk;
+                    animator.SetTrigger("IsAttacking");
                     currentSound.Play();
                     return;
                 }
@@ -397,23 +420,12 @@ public class PlayerMove : MonoBehaviour
 
         if (tilemap.HasTile(temp))
         {
-            Vector3Int nfuuew = new Vector3Int(2, 2, 0);
-            Vector3Int shopVec = tilemap.WorldToCell(new Vector3(shopGuide.transform.position.x, shopGuide.transform.position.y));
-            Debug.Log("Hi" + shopVec);
-            if (shopVec == temp)
-            {
-                ShopManager.instance.gameObject.SetActive(true);
-            } 
-            else
-            {           
-                left = true;
-                RollDice(0,6);
-                currentSound.clip = playerMove;
-                currentSound.Play();
-
-            }
-
-
+            left = true;
+            //oldPosition.x += -0.5f;
+            //oldPosition.y += 0.25f;
+            RollDice(0,6);
+            currentSound.clip = playerMove;
+            currentSound.Play();
         }
     }
 
@@ -431,6 +443,8 @@ public class PlayerMove : MonoBehaviour
                     em.all_enemyData[i].EnemyHP -= attakDmg;
                     attakDmg = OriginalAtkDmg;
                     currentSound.clip = playerAtk;
+                    animator.SetTrigger("IsAttacking");
+
                     currentSound.Play();
                     return;
                 }
@@ -440,6 +454,8 @@ public class PlayerMove : MonoBehaviour
         if (tilemap.HasTile(temp))
         {
             right = true;
+            //oldPosition.x += 0.5f;
+            //oldPosition.y += -0.25f;
             RollDice(0,6);
             currentSound.clip = playerMove;
             currentSound.Play();

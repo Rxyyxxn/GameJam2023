@@ -142,20 +142,21 @@ MonoBehaviour:
   raycastOBJ: {fileID: 743727257338232584}
   nextPlayerTilePos: {x: 0, y: 0, z: 0}
   em: {fileID: 0}
-  attakDmg: 0
-  HP: 0
+  attakDmg: 1
+  HP: 10
   goldCount: 0
   currentSound: {fileID: 0}
   playerMove: {fileID: 8300000, guid: 7e888cce1f00eef499acb81f99dfc5b4, type: 3}
   playerAtk: {fileID: 8300000, guid: 758af6a1aa1985f41bafbdadbf33fdeb, type: 3}
   playerCollectItem: {fileID: 8300000, guid: bf994127c4d53b24a882094b7a1adb65, type: 3}
   playerEnd: {fileID: 8300000, guid: 8157120d6c368d644a412e2bd8e97133, type: 3}
+  dice: {fileID: 0}
   unactiveInvUI: 0
   closeButton: {fileID: 0}
-  LowStopper: {fileID: 4688617719011361215, guid: 0098c4b85806ed949881bcf03d8b3e56,
-    type: 3}
-  HighStopper: {fileID: 5091223556359981039, guid: 1871010a072df344cb46ee209cadd914,
-    type: 3}
+  shopGuide: {fileID: 0}
+  questGuide: {fileID: 0}
+  shopCanvas: {fileID: 0}
+  questCanvas: {fileID: 0}
 --- !u!70 &5769809675636775723
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
