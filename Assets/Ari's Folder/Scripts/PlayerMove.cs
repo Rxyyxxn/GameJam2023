@@ -16,6 +16,8 @@ public class PlayerMove : MonoBehaviour
     public static PlayerMove instance;
     public Vector3Int nextPlayerTilePos;
 
+    Animator animator;
+
 
     public EnemyManager em;
 
@@ -48,6 +50,7 @@ public class PlayerMove : MonoBehaviour
         tilemap.CellToWorld(tilemap.WorldToCell(transform.position));
         playerPosOffset = new Vector3Int(-1, -1, 0);
         OriginalAtkDmg = attakDmg;
+        animator = gameObject.GetComponent<Animator>();
     }
     // Update is called once per frame
     void Update()
@@ -114,46 +117,50 @@ public class PlayerMove : MonoBehaviour
         }
         //Mobile Movement
         {
-            if (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began)
+            if (!up && !down && !left && !right)
             {
-                startPos = Input.GetTouch(0).position;
-            }
-            if (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Ended)
-            {
-                endPos = Input.GetTouch(0).position;
-                
-                if (endPos.x > startPos.x && endPos.y > startPos.y)
+                if (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began)
                 {
-                    Up();
-                    up = true;
+                    startPos = Input.GetTouch(0).position;
                 }
-                if (endPos.x < startPos.x && endPos.y < startPos.y)
+                if (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Ended)
                 {
-                    Down();
-                    down = true;
+                    endPos = Input.GetTouch(0).position;
+
+                    if (endPos.x > startPos.x && endPos.y > startPos.y)
+                    {
+                        Up();
+                    }
+                    if (endPos.x < startPos.x && endPos.y < startPos.y)
+                    {
+                        Down();
+                    }
+                    if (endPos.x < startPos.x && endPos.y > startPos.y)
+                    {
+                        Left();
+                    }
+                    if (endPos.x > startPos.x && endPos.y < startPos.y)
+                    {
+                        Right();
+                    }
                 }
-                if (endPos.x < startPos.x && endPos.y > startPos.y)
-                {
-                    Left();
-                    left = true;
-                }
-                if (endPos.x > startPos.x && endPos.y < startPos.y)
-                {
-                    Right();
-                    right = true;
-                }
+
                 
             }
             if (up)
             {
                 Vector3 nextPos = new Vector2(oldPosition.x + 0.5f, oldPosition.y + 0.25f);
-                Vector3Int temp = tilemap.WorldToCell(nextPos);
+                Vector3Int temp = tilemap.WorldToCell(nextPos) - playerPosOffset;
 
                 oldPosition = Vector3.Lerp(oldPosition, nextPos, 2f * Time.deltaTime);
 
-                Vector3Int ifenfenf = tilemap.WorldToCell(oldPosition);
+                Vector3Int ifenfenf = tilemap.WorldToCell(oldPosition) - playerPosOffset;
+                animator.SetBool("IsJumping", true);
+
                 if (temp == ifenfenf)
                 {
+                    animator.SetBool("IsJumping", false);
+
                     up = false;
                 }
 
@@ -161,13 +168,17 @@ public class PlayerMove : MonoBehaviour
             if (down)
             {
                 Vector2 nextPos = new Vector2(oldPosition.x - 0.5f, oldPosition.y - 0.25f);
-                Vector3Int temp = tilemap.WorldToCell(nextPos);
+                Vector3Int temp = tilemap.WorldToCell(nextPos) - playerPosOffset;
 
                 oldPosition = Vector3.Lerp(oldPosition, nextPos, 2f * Time.deltaTime);
 
-                Vector3Int ifenfenf = tilemap.WorldToCell(oldPosition);
+                Vector3Int ifenfenf = tilemap.WorldToCell(oldPosition) - playerPosOffset;
+                animator.SetBool("IsJumping", true);
+
                 if (temp == ifenfenf)
                 {
+                    animator.SetBool("IsJumping", false);
+
                     down = false;
                 }
 
@@ -175,13 +186,17 @@ public class PlayerMove : MonoBehaviour
             if (left)
             {
                 Vector2 nextPos = new Vector2(oldPosition.x - 0.5f, oldPosition.y + 0.25f);
-                Vector3Int temp = tilemap.WorldToCell(nextPos);
-
+                Vector3Int temp = tilemap.WorldToCell(nextPos)-playerPosOffset;
+                Debug.Log(temp);
                 oldPosition = Vector3.Lerp(oldPosition, nextPos, 2f * Time.deltaTime);
 
-                Vector3Int ifenfenf = tilemap.WorldToCell(oldPosition);
+                Vector3Int ifenfenf = tilemap.WorldToCell(oldPosition)-playerPosOffset;
+                animator.SetBool("IsJumping", true);
+
                 if (temp == ifenfenf)
                 {
+                    animator.SetBool("IsJumping", false);
+
                     left = false;
                 }
 
@@ -189,14 +204,18 @@ public class PlayerMove : MonoBehaviour
             if (right)
             {
                 Vector3 nextPos = new Vector2(oldPosition.x + 0.5f, oldPosition.y - 0.25f);
-                Vector3Int temp = tilemap.WorldToCell(nextPos);
+                Vector3Int temp = tilemap.WorldToCell(nextPos) - playerPosOffset;
 
 
                 oldPosition = Vector3.Lerp(oldPosition, nextPos, 2f * Time.deltaTime);
 
-                Vector3Int ifenfenf = tilemap.WorldToCell(oldPosition);
+                Vector3Int ifenfenf = tilemap.WorldToCell(oldPosition) - playerPosOffset;
+                animator.SetBool("IsJumping", true);
+
                 if (temp == ifenfenf)
                 {
+                    animator.SetBool("IsJumping", false);
+
                     right = false;
                 }
 
@@ -225,13 +244,7 @@ public class PlayerMove : MonoBehaviour
 
         if (tilemap.HasTile(temp))
         {
-            //oldPosition = Vector3.Slerp(oldPosition, nextPos, 2f * Time.deltaTime);
-            //oldPosition.x += -0.5f;
-            //oldPosition.y += -0.25f;
             down = true;
-
-            oldPosition.x += -0.5f;
-            oldPosition.y += -0.25f;
             RollDice(0,6);
         }
     }
@@ -256,18 +269,8 @@ public class PlayerMove : MonoBehaviour
 
         if (tilemap.HasTile(temp))
         {
-            //oldPosition = Vector3.Slerp(oldPosition, nextPos, 2f * Time.deltaTime);
-
-            //oldPosition.x += 0.5f;
-            //oldPosition.y += 0.25f;
             up = true;
-
-            oldPosition.x += 0.5f;
-            oldPosition.y += 0.25f;
             RollDice(0,6);
-        }
-        else
-        {
 
         }
     }
@@ -292,18 +295,8 @@ public class PlayerMove : MonoBehaviour
 
         if (tilemap.HasTile(temp))
         {
-            //oldPosition = Vector3.Slerp(oldPosition, nextPos, 2f * Time.deltaTime);
-
-            //oldPosition.x += -0.5f;
-            //oldPosition.y += 0.25f;
             left = true;
-
-            oldPosition.x += -0.5f;
-            oldPosition.y += 0.25f;
             RollDice(0,6);
-        }
-        else
-        {
 
         }
     }
@@ -328,19 +321,10 @@ public class PlayerMove : MonoBehaviour
 
         if (tilemap.HasTile(temp))
         {
-            //oldPosition = Vector3.Slerp(oldPosition, nextPos, 2f * Time.deltaTime);
-
-            //oldPosition.x += 0.5f;
-            //oldPosition.y += -0.25f;
             right = true;
-
-            oldPosition.x += 0.5f;
-            oldPosition.y += -0.25f;
             RollDice(0,6);
+
         }
-        else
-        {
-        };
     }
 
     public Vector3Int GetPlayerTilePos()
