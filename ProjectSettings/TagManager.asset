@@ -9,6 +9,8 @@ TagManager:
   - enemy
   - InventoryBar
   - InventoryUI
+  - OpenBtn
+  - CloseBtn
   layers:
   - Default
   - TransparentFX

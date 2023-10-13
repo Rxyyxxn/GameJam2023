@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class InventorySystem : MonoBehaviour
 {
-    public GameObject InventoryBar;
-    private Transform InvBarTransform;
+    private GameObject InventoryBar;
+    public Transform InvBarTransform;
 
     private Dictionary<InventoryItemData, InventoryItem> m_itemDictionary;
     public List<InventoryItem> inventory { get; set; }
@@ -14,24 +14,30 @@ public class InventorySystem : MonoBehaviour
     public onInventoryChangedEvent OnInvChange;
     public static InventorySystem current;
 
+    public GameObject playerGO;
+
     private void Update()
     {
-        //for (int i = 0; i < inventory.Count; i++)
-        //{
-        //    Debug.Log(inventory[i].data.displayName + " " + inventory[i].stackSize);
-        //}
+        InventoryBar = playerGO.GetComponent<PlayerMove>().invenBar;
+        InvBarTransform = playerGO.GetComponent<PlayerMove>().invenBarTr;
+
+        //Debug.Log(current);
     }
 
     private void Awake()
     {
+        DontDestroyOnLoad(this.gameObject);
         inventory = new List<InventoryItem>();
         m_itemDictionary = new Dictionary<InventoryItemData, InventoryItem>();
+
+        playerGO = GameObject.FindGameObjectWithTag("Player");
+
+        //current = this;
+    }
+
+    private void Start()
+    {
         current = this;
-
-        InventoryBar = GameObject.FindGameObjectWithTag("InventoryBar");
-        InvBarTransform = InventoryBar.transform;
-
-        DontDestroyOnLoad(this.gameObject);
     }
 
     public InventoryItem Get(InventoryItemData refData)
