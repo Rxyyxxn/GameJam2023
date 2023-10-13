@@ -558,6 +558,12 @@ CircleCollider2D:
   m_Offset: {x: 0, y: -0.01}
   serializedVersion: 2
   m_Radius: 0.38615477
+--- !u!1 &582835976 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2519770267886995334, guid: 9971a0e21c78dbf41b87a304ee829067,
+    type: 3}
+  m_PrefabInstance: {fileID: 1305194793}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &658518103
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1502,6 +1508,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_TagString
       value: QuestCanvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 2519770267886995334, guid: 9971a0e21c78dbf41b87a304ee829067,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2608608238066940261, guid: 9971a0e21c78dbf41b87a304ee829067,
         type: 3}
@@ -2679,6 +2690,7 @@ GameObject:
   - component: {fileID: 1666164958}
   - component: {fileID: 1666164957}
   - component: {fileID: 1666164959}
+  - component: {fileID: 1666164960}
   m_Layer: 0
   m_Name: ShopGuide
   m_TagString: Shop
@@ -2788,6 +2800,18 @@ CircleCollider2D:
   m_Offset: {x: 0.48833424, y: -0.44416326}
   serializedVersion: 2
   m_Radius: 0.22589499
+--- !u!114 &1666164960
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1666164956}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a3877cee88d20b342ade5b480cc57959, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1682860700
 GameObject:
   m_ObjectHideFlags: 0
@@ -3103,6 +3127,7 @@ GameObject:
   - component: {fileID: 1963130157}
   - component: {fileID: 1963130156}
   - component: {fileID: 1963130158}
+  - component: {fileID: 1963130159}
   m_Layer: 0
   m_Name: QuestGuide
   m_TagString: Quest
@@ -3212,6 +3237,19 @@ CircleCollider2D:
   m_Offset: {x: -0.343903, y: -0.93853754}
   serializedVersion: 2
   m_Radius: 0.31570905
+--- !u!114 &1963130159
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1963130155}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5feb486e6d3bcaf499c0a3c641f44215, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  canvas: {fileID: 582835976}
 --- !u!1 &1993987382
 GameObject:
   m_ObjectHideFlags: 0
