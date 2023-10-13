@@ -647,8 +647,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8f52526316c8f544999992a71a429f4c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+<<<<<<< Updated upstream
   coins_Text: {fileID: 0}
   settings: {fileID: 0}
+=======
+  coins_Text: {fileID: 6336341966711974785}
+>>>>>>> Stashed changes
 --- !u!1 &8959634150448526061
 GameObject:
   m_ObjectHideFlags: 0
