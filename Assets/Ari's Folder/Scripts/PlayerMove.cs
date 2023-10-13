@@ -54,6 +54,8 @@ public class PlayerMove : MonoBehaviour
     {
         tilemap = GameObject.FindGameObjectWithTag("GroundTile").GetComponent<Tilemap>();
         tilemap.CellToWorld(tilemap.WorldToCell(transform.position));
+        invUI = GameObject.FindGameObjectWithTag("InventoryUI");
+        invUI.SetActive(false);
         playerPosOffset = new Vector3Int(-1, -1, 0);
         OriginalAtkDmg = attakDmg;
         animator = gameObject.GetComponent<Animator>();
@@ -77,22 +79,6 @@ public class PlayerMove : MonoBehaviour
         gameObject.transform.position = oldPosition;
 
         nextPlayerTilePos = tilemap.WorldToCell(oldPosition);
-
-        if (Input.GetKeyDown(KeyCode.G))
-        {
-            if (invUI.activeSelf)
-            {
-                //for (int i = 0; i < InventorySystem.current.inventory.Count; i++)
-                //{
-                //    if (InventorySystem.current.inventory[i].data.displayName == "Carrot0")
-                //    {
-                //        InventorySystem.current.Remove(InventorySystem.current.inventory[i].data);
-                //    }
-                //}
-
-                Debug.Log(InventorySystem.current.ItemCount("Carrot0"));
-            }
-        }
 
         if (Input.GetKeyDown(KeyCode.T))
         {

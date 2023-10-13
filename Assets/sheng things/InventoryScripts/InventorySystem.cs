@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class InventorySystem : MonoBehaviour
 {
-    public Transform InventoryBar;
+    public GameObject InventoryBar;
+    private Transform InvBarTransform;
 
     private Dictionary<InventoryItemData, InventoryItem> m_itemDictionary;
     public List<InventoryItem> inventory { get; set; }
@@ -27,7 +28,8 @@ public class InventorySystem : MonoBehaviour
         m_itemDictionary = new Dictionary<InventoryItemData, InventoryItem>();
         current = this;
 
-        //InventoryBar = GameObject.Find("InventoryBar").GetComponent<RectTransform>();
+        InventoryBar = GameObject.FindGameObjectWithTag("InventoryBar");
+        InvBarTransform = InventoryBar.transform;
 
         DontDestroyOnLoad(this.gameObject);
     }
