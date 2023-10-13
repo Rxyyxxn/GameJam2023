@@ -20,6 +20,7 @@ public class ItemObject : MonoBehaviour
 
     public void OnHandlePickupItem()
     {
+        Debug.Log(InventorySystem.current);
         InventorySystem.current.Add(refItem);
         Destroy(gameObject);
     }

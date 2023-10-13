@@ -1,11 +1,15 @@
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.Tilemaps;
+using UnityEngine.SceneManagement;
 
 public class PlayerMove : MonoBehaviour
 {
     public Tilemap tilemap;
     public GameObject invUI;
+    public GameObject invenBar;
+    public Transform invenBarTr;
     //PC
     private Vector2 oldPosition;
     //Mobile
@@ -37,6 +41,20 @@ public class PlayerMove : MonoBehaviour
 
     public bool unactiveInvUI = false;
 
+    private bool InvenUIopen = false;
+
+    private float openUItimer = 0.0f;
+
+    private bool theOtherWay = false;
+
+    float minX = 3f;
+    float maxX = 27f;
+
+    bool runOnce = false;
+    public Button closeButton;
+
+    GameObject UIConnector;
+
     private void Awake()
     {
         if (instance == null)
@@ -48,25 +66,52 @@ public class PlayerMove : MonoBehaviour
             Destroy(gameObject);
         }
 
-        invUI = GameObject.Find("InventoryUI");
-
         DontDestroyOnLoad(gameObject);
     }
+
     private void Start()
     {
         tilemap = GameObject.FindGameObjectWithTag("GroundTile").GetComponent<Tilemap>();
         tilemap.CellToWorld(tilemap.WorldToCell(transform.position));
         invUI = GameObject.FindGameObjectWithTag("InventoryUI");
-        invUI.SetActive(false);
         playerPosOffset = new Vector3Int(-1, -1, 0);
         OriginalAtkDmg = attakDmg;
         animator = gameObject.GetComponent<Animator>();
         currentSound = GetComponent<AudioSource>();
-    }
+        //invUI.transform.Translate(175, 0, 0);
+        UIConnector = GameObject.FindGameObjectWithTag("OpenBtn");
+        closeButton = GameObject.FindGameObjectWithTag("CloseBtn").GetComponent<Button>();
+        Button CloseButton = closeButton.GetComponent<Button>();
+        CloseButton.onClick.AddListener(OpenInvenUI);
+        //UIConnector.transform.position = new Vector3(265, 200, UIConnector.transform.position.z);
+        UIConnector.transform.localPosition = new Vector3(27, 0 , UIConnector.transform.localPosition.z);
+       }
+
+
 
     // Update is called once per frame
     void Update()
     {
+        if (SceneManager.GetActiveScene() == SceneManager.GetSceneByBuildIndex(4))
+        {
+            UIConnector = GameObject.FindGameObjectWithTag("OpenBtn");
+            closeButton = GameObject.FindGameObjectWithTag("CloseBtn").GetComponent<Button>();
+            Button CloseButton = closeButton.GetComponent<Button>();
+            CloseButton.onClick.AddListener(OpenInvenUI);
+            invUI = GameObject.FindGameObjectWithTag("InventoryUI");
+            invenBar = GameObject.FindGameObjectWithTag("InventoryBar");
+            invenBarTr = invenBar.transform;
+            minX = 30f;
+            maxX = 210f;
+            if (!runOnce)
+            {
+                UIConnector.transform.localPosition = new Vector3(210, 0, UIConnector.transform.localPosition.z);
+                runOnce = true;
+            }
+        }
+
+        Debug.Log(UIConnector.transform.localPosition.x +", "+ minX);
+
         //Initialise Tilemap
         if(tilemap!=null)
         {
@@ -85,7 +130,37 @@ public class PlayerMove : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.T))
         {
-            invUI.SetActive(!invUI.activeSelf);
+            OpenInvenUI();
+        }
+
+        //open or close inventory
+        if (InvenUIopen)
+        {
+            Debug.Log("eg");
+            if (!theOtherWay)
+            {
+                if (UIConnector.transform.localPosition.x > minX)
+                {
+                    UIConnector.transform.Translate(-1, 0, 0);
+                }
+                else
+                {
+                    InvenUIopen = false;
+                    theOtherWay = true;
+                }
+            }
+            else
+            {
+                if (UIConnector.transform.localPosition.x < maxX)
+                {
+                    UIConnector.transform.Translate(1, 0, 0);
+                }
+                else
+                {
+                    InvenUIopen = false;
+                    theOtherWay = false;
+                }
+            }
         }
 
         //PC Movement 
@@ -219,6 +294,12 @@ public class PlayerMove : MonoBehaviour
         }
 
     }
+
+    public void OpenInvenUI()
+    {
+        InvenUIopen = true;
+    }
+
     public void Down()
     {
         Vector2 nextPos = new Vector2(oldPosition.x - 0.5f, oldPosition.y - 0.25f);

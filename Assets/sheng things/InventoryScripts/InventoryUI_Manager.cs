@@ -19,6 +19,11 @@ public class InventoryUI_Manager : MonoBehaviour
         InventorySystem.current.OnInvChange += OnUpdateInventory;
     }
 
+    private void Update()
+    {
+        InventoryBar = InventorySystem.current.InvBarTransform;
+    }
+
     private void OnUpdateInventory()
     {
         if (InventoryBar!=null)
