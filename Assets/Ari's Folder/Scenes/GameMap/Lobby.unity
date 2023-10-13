@@ -1800,17 +1800,20 @@ PrefabInstance:
         type: 3}
       propertyPath: diceimages.Array.data[0]
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 21300000, guid: 90f320611b469984b93b8c2423f697b6,
+        type: 3}
     - target: {fileID: 4102261986635123916, guid: c6c24a0f756b8df46b8538435f869771,
         type: 3}
       propertyPath: diceimages.Array.data[1]
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 21300000, guid: 44935fc992ff9084fbccc7242a7f9b01,
+        type: 3}
     - target: {fileID: 4102261986635123916, guid: c6c24a0f756b8df46b8538435f869771,
         type: 3}
       propertyPath: diceimages.Array.data[2]
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 21300000, guid: a04d875848faa9e49afa8959dae4283e,
+        type: 3}
     - target: {fileID: 4102261986635123916, guid: c6c24a0f756b8df46b8538435f869771,
         type: 3}
       propertyPath: description.Array.data[0]
