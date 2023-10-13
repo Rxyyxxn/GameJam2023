@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 52034ae98ecb9134c882cf50ea65aa06
+guid: 372e515d2c79e8a44a2cc6e30dcb7f17
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -123,7 +123,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: har2s_0
+      name: helmet_jump_0
       rect:
         serializedVersion: 2
         x: 0
@@ -137,14 +137,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1fd1932ef91253a4cae21a59bda102c9
-      internalID: 839024069
+      spriteID: a64e12fb3ab48fc4fb008d676d123a8f
+      internalID: 333066396
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: har2s_1
+      name: helmet_jump_1
       rect:
         serializedVersion: 2
         x: 64
@@ -158,14 +158,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8328a7397a337e640a2f3d1b2819ba13
-      internalID: 978490421
+      spriteID: 6989d818ca73f354085210327a9141ff
+      internalID: 1512919333
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: har2s_2
+      name: helmet_jump_2
       rect:
         serializedVersion: 2
         x: 128
@@ -179,14 +179,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3f76910b54002b44686519b57620bf2e
-      internalID: 189911707
+      spriteID: 2338aeb71cab9cf469c0f565ce187473
+      internalID: 877035369
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: har2s_3
+      name: helmet_jump_3
       rect:
         serializedVersion: 2
         x: 192
@@ -200,14 +200,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 93d3c5b0041a2a24097ed381cb1a5dd0
-      internalID: -475928063
+      spriteID: 789c724595090304d9cf7180af763103
+      internalID: 1393487265
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: har2s_4
+      name: helmet_jump_4
       rect:
         serializedVersion: 2
         x: 256
@@ -221,14 +221,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e68e409d2d25d2242a52f49df5a16725
-      internalID: -1428972159
+      spriteID: e0967ca43933a28498121d8b9ff808dc
+      internalID: 681145649
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: har2s_5
+      name: helmet_jump_5
       rect:
         serializedVersion: 2
         x: 320
@@ -242,29 +242,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 28771fe941ea25540a89038ce78fa1c8
-      internalID: 1936850656
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: har2s_6
-      rect:
-        serializedVersion: 2
-        x: 384
-        y: 0
-        width: 64
-        height: 64
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 9e28d4155443f8444885930ec7c60f84
-      internalID: -1265275592
+      spriteID: b6712cb93ecf2f0468aa30c383cb5dea
+      internalID: -391544726
       vertices: []
       indices: 
       edges: []
@@ -272,7 +251,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 80291fcb631a31441973d9746affaa4c
+    spriteID: 5e97eb03825dee720800000000000000
     internalID: 0
     vertices: []
     indices: 
@@ -280,13 +259,12 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      har2s_0: 839024069
-      har2s_1: 978490421
-      har2s_2: 189911707
-      har2s_3: -475928063
-      har2s_4: -1428972159
-      har2s_5: 1936850656
-      har2s_6: -1265275592
+      helmet_jump_0: 333066396
+      helmet_jump_1: 1512919333
+      helmet_jump_2: 877035369
+      helmet_jump_3: 1393487265
+      helmet_jump_4: 681145649
+      helmet_jump_5: -391544726
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
