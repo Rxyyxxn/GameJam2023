@@ -29,6 +29,12 @@ public class PlayerMove : MonoBehaviour
     public int goldCount;
     int steps;
 
+    public AudioSource currentSound;
+    public AudioClip playerMove;
+    public AudioClip playerAtk;
+    public AudioClip playerCollectItem;
+    public AudioClip playerEnd;
+
     private void Awake()
     {
         if (instance == null)
@@ -51,6 +57,7 @@ public class PlayerMove : MonoBehaviour
         playerPosOffset = new Vector3Int(-1, -1, 0);
         OriginalAtkDmg = attakDmg;
         animator = gameObject.GetComponent<Animator>();
+        currentSound = GetComponent<AudioSource>();
     }
     // Update is called once per frame
     void Update()
@@ -236,6 +243,8 @@ public class PlayerMove : MonoBehaviour
                 {
                     em.all_enemyData[i].EnemyHP -= attakDmg;
                     attakDmg = OriginalAtkDmg;
+                    currentSound.clip = playerAtk;
+                    currentSound.Play();
                     return;
                 }
             }
@@ -246,6 +255,8 @@ public class PlayerMove : MonoBehaviour
         {
             down = true;
             RollDice(0,6);
+            currentSound.clip = playerMove;
+            currentSound.Play();
         }
     }
 
@@ -262,6 +273,8 @@ public class PlayerMove : MonoBehaviour
                 {
                     em.all_enemyData[i].EnemyHP -= attakDmg;
                     attakDmg = OriginalAtkDmg;
+                    currentSound.clip = playerAtk;
+                    currentSound.Play();
                     return;
                 }
             }
@@ -271,7 +284,8 @@ public class PlayerMove : MonoBehaviour
         {
             up = true;
             RollDice(0,6);
-
+            currentSound.clip = playerMove;
+            currentSound.Play();
         }
     }
 
@@ -288,6 +302,8 @@ public class PlayerMove : MonoBehaviour
                 {
                     em.all_enemyData[i].EnemyHP -= attakDmg;
                     attakDmg = OriginalAtkDmg;
+                    currentSound.clip = playerAtk;
+                    currentSound.Play();
                     return;
                 }
             }
@@ -297,7 +313,8 @@ public class PlayerMove : MonoBehaviour
         {
             left = true;
             RollDice(0,6);
-
+            currentSound.clip = playerMove;
+            currentSound.Play();
         }
     }
 
@@ -314,6 +331,8 @@ public class PlayerMove : MonoBehaviour
                 {
                     em.all_enemyData[i].EnemyHP -= attakDmg;
                     attakDmg = OriginalAtkDmg;
+                    currentSound.clip = playerAtk;
+                    currentSound.Play();
                     return;
                 }
             }
@@ -323,7 +342,8 @@ public class PlayerMove : MonoBehaviour
         {
             right = true;
             RollDice(0,6);
-
+            currentSound.clip = playerMove;
+            currentSound.Play();
         }
     }
 

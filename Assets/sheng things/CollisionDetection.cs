@@ -11,6 +11,8 @@ public class CollisionDetection : MonoBehaviour
         if (other.gameObject.CompareTag("consumable"))
         {
             // The player touched a consumable object, make it disappear.
+            playerGO.GetComponent<PlayerMove>().currentSound.clip = playerGO.GetComponent<PlayerMove>().playerCollectItem;
+            playerGO.GetComponent<PlayerMove>().currentSound.Play();
             other.gameObject.GetComponent<ItemObject>().OnHandlePickupItem();
         }
 
