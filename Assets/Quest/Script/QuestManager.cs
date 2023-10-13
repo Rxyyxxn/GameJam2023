@@ -26,7 +26,7 @@ public class QuestManager : MonoBehaviour
     {
         inventorySystem = InventorySystem.current;
         Debug.Log(timer);
-        if (//)
+        if (1==1)
         {
             // If enough materials then complete the quest and reload now one, reset slider
             if (inventorySystem.ItemCount(quests[currentQuestIndex].itemname) >= quests[currentQuestIndex].requiredItems)
@@ -59,9 +59,6 @@ public class QuestManager : MonoBehaviour
     void AssignRandomQuests()
     {
         ShuffleQuests();
-
-        quests[quest].
-        
     }
 
     void ShuffleQuests()
