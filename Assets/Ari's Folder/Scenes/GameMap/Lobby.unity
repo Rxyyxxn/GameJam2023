@@ -304,53 +304,6 @@ RectTransform:
     type: 3}
   m_PrefabInstance: {fileID: 1621266104}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &285692060
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 285692062}
-  - component: {fileID: 285692061}
-  m_Layer: 0
-  m_Name: InventoryUIManager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &285692061
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 285692060}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9677f2effe3f25447861865f736be074, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_slotPrefab: {fileID: 8248027261447865877, guid: 84afbddf8730ebd4e9ae45efe704c941,
-    type: 3}
-  InventoryBar: {fileID: 1422987429}
---- !u!4 &285692062
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 285692060}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 5.999014, y: 0.8962264, z: 85.649506}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &384306376
 GameObject:
   m_ObjectHideFlags: 0
@@ -2080,12 +2033,6 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!224 &1422987429 stripped
-RectTransform:
-  m_CorrespondingSourceObject: {fileID: 2036930688163089978, guid: 25a9a35558b78bb47ab0f86ab42036fe,
-    type: 3}
-  m_PrefabInstance: {fileID: 1621266104}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1429374147
 GameObject:
   m_ObjectHideFlags: 0
@@ -4337,4 +4284,3 @@ SceneRoots:
   - {fileID: 1334209128}
   - {fileID: 879020712}
   - {fileID: 1305194793}
-  - {fileID: 285692062}
