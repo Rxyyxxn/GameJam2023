@@ -6,7 +6,7 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/MainMenu.unity
+    path: Assets/Ari's Folder/Scenes/MainMenu.unity
     guid: 80a3a94ad31e29648b3a7cfa6030b73c
   - enabled: 1
     path: Assets/Scenes/sheng2.unity

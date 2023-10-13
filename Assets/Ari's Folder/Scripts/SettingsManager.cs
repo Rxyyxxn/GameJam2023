@@ -37,11 +37,27 @@ public class SettingsManager : MonoBehaviour
         {
             KMSButton.SetActive(true);
         }
+       if (settingsPanel.activeSelf)
+        {
+            Time.timeScale = 0.0f;
+        }
+       else
+        {
+            Time.timeScale = 1.0f;
+
+        }
     }
 
     public void OnButtonKMS()
     {
         SceneManager.LoadScene("Lobby");
+        Time.timeScale = 1.0f;
 
+
+    }
+
+    public void OpenSettings()
+    {
+        settingsPanel.SetActive(true);
     }
 }

@@ -17,9 +17,10 @@ public class ChangeToMainMap : MonoBehaviour
     {
 
     }
-    private void OnTriggerEnter2D(Collider2D collision)
+
+    private void OnTriggerStay2D(Collider2D collision)
     {
-        if (collision != null)
+        if (collision != null && PlayerMove.instance.endPos.x > PlayerMove.instance.startPos.x && PlayerMove.instance.endPos.y > PlayerMove.instance.startPos.y)
         {
             OnButtonChangeScene();
         }

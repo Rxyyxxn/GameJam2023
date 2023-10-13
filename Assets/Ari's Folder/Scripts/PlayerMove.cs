@@ -13,8 +13,8 @@ public class PlayerMove : MonoBehaviour
     //PC
     private Vector2 oldPosition;
     //Mobile
-    private Vector2 startPos;
-    private Vector2 endPos;
+    public Vector2 startPos;
+    public Vector2 endPos;
     private Vector3Int playerPosOffset;
     [SerializeField] public GameObject raycastOBJ;
     public static PlayerMove instance;
@@ -64,6 +64,8 @@ public class PlayerMove : MonoBehaviour
     public GameObject shopCanvas;
     public GameObject questCanvas;
 
+    bool comebackfromscene4 = false;
+
     private void Awake()
     {
         if (instance == null)
@@ -100,7 +102,6 @@ public class PlayerMove : MonoBehaviour
         questGuide = GameObject.FindGameObjectWithTag("Quest");
         shopCanvas = GameObject.FindGameObjectWithTag("ShopCanvas");
         questCanvas = GameObject.FindGameObjectWithTag("QuestCanvas");
-
     }
 
 
@@ -110,6 +111,7 @@ public class PlayerMove : MonoBehaviour
     {
         if (SceneManager.GetActiveScene() == SceneManager.GetSceneByBuildIndex(4))
         {
+            comebackfromscene4 = true;
             tilemap = GameObject.FindGameObjectWithTag("GroundTile").GetComponent<Tilemap>();
             em = GameObject.FindObjectOfType<EnemyManager>();
             UIConnector = GameObject.FindGameObjectWithTag("OpenBtn");
@@ -128,10 +130,19 @@ public class PlayerMove : MonoBehaviour
             }
         }
 
-        Debug.Log(GetPlayerTilePos());
+        if (comebackfromscene4 && SceneManager.GetActiveScene() == SceneManager.GetSceneByBuildIndex(3))
+        {
+            comebackfromscene4 = false;
+            minX = 3f;
+            maxX = 27f;
+            Start();
+        }
 
-        //Initialise Tilemap
-        if(tilemap!=null)
+
+            //Debug.Log(GetPlayerTilePos());
+
+            //Initialise Tilemap
+            if (tilemap!=null)
         {
 
             Vector3Int pos = tilemap.LocalToCell(transform.position) + playerPosOffset;
