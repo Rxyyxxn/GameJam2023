@@ -38,6 +38,10 @@ public class PlayerMove : MonoBehaviour
     public AudioClip playerAtk;
     public AudioClip playerCollectItem;
     public AudioClip playerEnd;
+    Animator diceAnim;
+
+    public GameObject dice;
+
 
     public bool unactiveInvUI = false;
 
@@ -54,6 +58,11 @@ public class PlayerMove : MonoBehaviour
     public Button closeButton;
 
     GameObject UIConnector;
+
+    public GameObject shopGuide;
+    public GameObject questGuide;
+    public GameObject shopCanvas;
+    public GameObject questCanvas;
 
     private void Awake()
     {
@@ -85,7 +94,14 @@ public class PlayerMove : MonoBehaviour
         CloseButton.onClick.AddListener(OpenInvenUI);
         //UIConnector.transform.position = new Vector3(265, 200, UIConnector.transform.position.z);
         UIConnector.transform.localPosition = new Vector3(27, 0 , UIConnector.transform.localPosition.z);
-       }
+        dice = GameObject.FindGameObjectWithTag("Dice");
+        diceAnim = dice.GetComponent<Animator>();
+        shopGuide = GameObject.FindGameObjectWithTag("Shop");
+        questGuide = GameObject.FindGameObjectWithTag("Quest");
+        shopCanvas = GameObject.FindGameObjectWithTag("ShopCanvas");
+        questCanvas = GameObject.FindGameObjectWithTag("QuestCanvas");
+
+    }
 
 
 
@@ -381,10 +397,23 @@ public class PlayerMove : MonoBehaviour
 
         if (tilemap.HasTile(temp))
         {
-            left = true;
-            RollDice(0,6);
-            currentSound.clip = playerMove;
-            currentSound.Play();
+            Vector3Int nfuuew = new Vector3Int(2, 2, 0);
+            Vector3Int shopVec = tilemap.WorldToCell(new Vector3(shopGuide.transform.position.x, shopGuide.transform.position.y));
+            Debug.Log("Hi" + shopVec);
+            if (shopVec == temp)
+            {
+                ShopManager.instance.gameObject.SetActive(true);
+            } 
+            else
+            {           
+                left = true;
+                RollDice(0,6);
+                currentSound.clip = playerMove;
+                currentSound.Play();
+
+            }
+
+
         }
     }
 
@@ -434,6 +463,35 @@ public class PlayerMove : MonoBehaviour
                 Debug.Log("die number : " + dieNumber);
                 DefaultDiceBoost(dieNumber, MaxDieNum);
                 steps = 0;
+                if (dieNumber == 1)
+                {
+                    diceAnim.SetTrigger("IfRoll1");
+                }
+                else if (dieNumber == 2)
+                {
+                    diceAnim.SetTrigger("IfRoll2");
+
+                }
+                else if (dieNumber == 3)
+                {
+                    diceAnim.SetTrigger("IfRoll3");
+
+                }
+                else if (dieNumber == 4)
+                {
+                    diceAnim.SetTrigger("IfRoll4");
+
+                }
+                else if (dieNumber == 5)
+                {
+                    diceAnim.SetTrigger("IfRoll5");
+
+                }
+                else if (dieNumber == 6)
+                {
+                    diceAnim.SetTrigger("IfRoll6");
+
+                }
             }
         }
         //variant die

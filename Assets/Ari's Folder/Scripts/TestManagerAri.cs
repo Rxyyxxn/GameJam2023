@@ -8,6 +8,9 @@ public class TestManagerAri : MonoBehaviour
     public GameObject playerPrefab;
     public GameObject teleportPoint;
     public Transform playerSpawnPoint;
+    public GameObject shopCanvas;
+    //public GameObject questCanvas;
+
     Animator panelAnimator;
     bool isUp;
 
@@ -17,6 +20,8 @@ public class TestManagerAri : MonoBehaviour
        panelAnimator.SetBool("IsUp?",false);
        isUp = false;
        InstantiatePlayer();
+       shopCanvas.SetActive(false);
+       //questCanvas.SetActive(false);
     }
     public void OnKeyPressed()
     {
