@@ -48,6 +48,7 @@ GameObject:
   - component: {fileID: -5205097161493489203}
   - component: {fileID: 1616616358069552761}
   - component: {fileID: 1520014813327051438}
+  - component: {fileID: 8154144633154090489}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -139,6 +140,8 @@ MonoBehaviour:
   invUI: {fileID: 3987467754955971256, guid: 25a9a35558b78bb47ab0f86ab42036fe, type: 3}
   invenBar: {fileID: 0}
   invenBarTr: {fileID: 0}
+  startPos: {x: 0, y: 0}
+  endPos: {x: 0, y: 0}
   raycastOBJ: {fileID: 743727257338232584}
   nextPlayerTilePos: {x: 0, y: 0, z: 0}
   em: {fileID: 0}
@@ -363,3 +366,18 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &8154144633154090489
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8962227361284427219}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9677f2effe3f25447861865f736be074, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_slotPrefab: {fileID: 8248027261447865877, guid: b635779573601b1459266931f28cc7b9,
+    type: 3}
+  InventoryBar: {fileID: 0}

@@ -8,8 +8,18 @@ public class InventoryUI_Manager : MonoBehaviour
     private GameObject m_slotPrefab;
 
     public Transform InventoryBar;
+
+    public static InventoryUI_Manager instance;
     private void Awake()
     {
+        if (instance == null)
+        {
+            instance = this;
+        }
+        else if (instance != null)
+        {
+            Destroy(gameObject);
+        }
         DontDestroyOnLoad(this.gameObject);
     }
 
@@ -21,7 +31,7 @@ public class InventoryUI_Manager : MonoBehaviour
 
     private void Update()
     {
-        InventoryBar = InventorySystem.current.InvBarTransform;
+        InventoryBar = GameObject.FindGameObjectWithTag("InventoryBar").transform;
     }
 
     private void OnUpdateInventory()

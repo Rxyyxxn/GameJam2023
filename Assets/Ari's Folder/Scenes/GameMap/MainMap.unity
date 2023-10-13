@@ -661,6 +661,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: InventoryUI (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 3987467754955971256, guid: 25a9a35558b78bb47ab0f86ab42036fe,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5740595503019842116, guid: 25a9a35558b78bb47ab0f86ab42036fe,
         type: 3}
       propertyPath: m_TagString
@@ -1735,7 +1740,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1707204997
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3741,6 +3746,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   controlPanel: {fileID: 0}
   playerPrefab: {fileID: 8962227361284427219, guid: 5bf4373cfe47a3f43ab3fa02fe9254c9,
+    type: 3}
+  UIPrefab: {fileID: 3587871455253267483, guid: a3092396a45d0ec48935d99207813f52,
     type: 3}
   teleportPoint: {fileID: 0}
   playerSpawnPoint: {fileID: 0}

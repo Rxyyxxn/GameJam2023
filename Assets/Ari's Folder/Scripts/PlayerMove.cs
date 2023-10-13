@@ -85,6 +85,9 @@ public class PlayerMove : MonoBehaviour
         tilemap = GameObject.FindGameObjectWithTag("GroundTile").GetComponent<Tilemap>();
         tilemap.CellToWorld(tilemap.WorldToCell(transform.position));
         invUI = GameObject.FindGameObjectWithTag("InventoryUI");
+        invenBar = GameObject.FindGameObjectWithTag("InventoryBar");
+        invenBarTr = invenBar.transform;
+        em = GameObject.FindObjectOfType<EnemyManager>();
         playerPosOffset = new Vector3Int(-1, -1, 0);
         OriginalAtkDmg = attakDmg;
         animator = gameObject.GetComponent<Animator>();
@@ -109,7 +112,7 @@ public class PlayerMove : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (SceneManager.GetActiveScene() == SceneManager.GetSceneByBuildIndex(4))
+        if (SceneManager.GetActiveScene() == SceneManager.GetSceneByBuildIndex(2))
         {
             comebackfromscene4 = true;
             tilemap = GameObject.FindGameObjectWithTag("GroundTile").GetComponent<Tilemap>();
@@ -130,7 +133,7 @@ public class PlayerMove : MonoBehaviour
             }
         }
 
-        if (comebackfromscene4 && SceneManager.GetActiveScene() == SceneManager.GetSceneByBuildIndex(3))
+        if (comebackfromscene4 && SceneManager.GetActiveScene() == SceneManager.GetSceneByBuildIndex(1))
         {
             comebackfromscene4 = false;
             minX = 3f;
