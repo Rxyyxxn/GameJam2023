@@ -34,6 +34,10 @@ public class EnemyData : MonoBehaviour
     public float attackPauseTimer;
     float timer = 0.0f;
 
+    public AudioClip enemyAtkSound;
+    public AudioClip enemyDieSound;
+    private AudioSource currentSound;
+
     enum Direction
     {
         Up,
@@ -57,6 +61,7 @@ public class EnemyData : MonoBehaviour
         enemyDirection = Direction.Up;
         enemyVec3 = tmap.WorldToCell(transform.position);
         transform.position = tmap.CellToWorld(enemyVec3);
+        currentSound = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -137,6 +142,8 @@ public class EnemyData : MonoBehaviour
                     enemyVec3.y == playerGO.GetComponent<PlayerMove>().GetPlayerTilePos().y && enemyVec3.x == playerGO.GetComponent<PlayerMove>().GetPlayerTilePos().x - 1
                     )
                 {
+                    currentSound.clip = enemyAtkSound;
+                    currentSound.Play();
                     playerGO.GetComponent<PlayerMove>().HP -= EnemyAtk;
                     enemyState = EnemyState.AttackPause;
                 }
@@ -161,6 +168,8 @@ public class EnemyData : MonoBehaviour
 
     void Death()
     {
+        currentSound.clip = enemyDieSound;
+        currentSound.Play();
         playerGO.GetComponent<PlayerMove>().goldCount += 10;
         Destroy(gameObject);
     }
@@ -239,6 +248,7 @@ public class EnemyData : MonoBehaviour
                     }
                     //enemyVec3.y++;
                     transform.position = nextPos;
+
                     movetimer = .0f;
                     return;
                 }
