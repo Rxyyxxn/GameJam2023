@@ -17,7 +17,7 @@ public class TestManagerAri : MonoBehaviour
     {
 
        InstantiatePlayer();
-        InstantiateUI();
+      //  InstantiateUI();
 
     }
 
@@ -28,7 +28,7 @@ public class TestManagerAri : MonoBehaviour
 
     public void InstantiateUI()
     {
-        Instantiate(UIPrefab);
+       // Instantiate(UIPrefab);
     }
 
     private void Update()

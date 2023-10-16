@@ -133,9 +133,8 @@ GameObject:
   m_Component:
   - component: {fileID: 142318885}
   - component: {fileID: 142318884}
-  - component: {fileID: 142318886}
   m_Layer: 0
-  m_Name: unj vvcn
+  m_Name: Enemy Man
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -170,18 +169,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &142318886
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 142318883}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e2056dd22bb09b549b7778b595d002cb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &170428189
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -530,6 +517,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_AnchoredPosition.y
       value: -12.059
+      objectReference: {fileID: 0}
+    - target: {fileID: 2036930688163089978, guid: 25a9a35558b78bb47ab0f86ab42036fe,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 64
       objectReference: {fileID: 0}
     - target: {fileID: 2611797586393012763, guid: 25a9a35558b78bb47ab0f86ab42036fe,
         type: 3}
@@ -3834,7 +3826,7 @@ Canvas:
   m_GameObject: {fileID: 2079070642}
   m_Enabled: 1
   serializedVersion: 3
-  m_RenderMode: 1
+  m_RenderMode: 0
   m_Camera: {fileID: 384306378}
   m_PlaneDistance: 100
   m_PixelPerfect: 0

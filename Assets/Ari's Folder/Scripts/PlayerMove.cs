@@ -57,12 +57,15 @@ public class PlayerMove : MonoBehaviour
     bool runOnce = false;
     public Button closeButton;
 
-    GameObject UIConnector;
+    [SerializeField]GameObject UIConnector;
 
     public GameObject shopGuide;
     public GameObject questGuide;
     public GameObject shopCanvas;
     public GameObject questCanvas;
+
+
+    [SerializeField]RectTransform UITRANS;
 
     bool comebackfromscene4 = false;
 
@@ -93,18 +96,21 @@ public class PlayerMove : MonoBehaviour
         animator = gameObject.GetComponent<Animator>();
         currentSound = GetComponent<AudioSource>();
         //invUI.transform.Translate(175, 0, 0);
-        UIConnector = GameObject.FindGameObjectWithTag("OpenBtn");
+        UIConnector = GameObject.FindGameObjectWithTag("OpenBtn").transform.parent.gameObject;
         closeButton = GameObject.FindGameObjectWithTag("CloseBtn").GetComponent<Button>();
         Button CloseButton = closeButton.GetComponent<Button>();
         CloseButton.onClick.AddListener(OpenInvenUI);
         //UIConnector.transform.position = new Vector3(265, 200, UIConnector.transform.position.z);
-        UIConnector.transform.localPosition = new Vector3(27, 0 , UIConnector.transform.localPosition.z);
+        //UIConnector.transform.localPosition = new Vector3(27, 0 , UIConnector.transform.localPosition.z);
         dice = GameObject.FindGameObjectWithTag("Dice");
         diceAnim = dice.GetComponent<Animator>();
         shopGuide = GameObject.FindGameObjectWithTag("Shop");
         questGuide = GameObject.FindGameObjectWithTag("Quest");
         shopCanvas = GameObject.FindGameObjectWithTag("ShopCanvas");
         questCanvas = GameObject.FindGameObjectWithTag("QuestCanvas");
+        UITRANS = UIConnector.GetComponent<RectTransform>();
+        minX = 0;
+        maxX = UITRANS.anchoredPosition.x;
     }
 
 
@@ -117,18 +123,17 @@ public class PlayerMove : MonoBehaviour
             comebackfromscene4 = true;
             tilemap = GameObject.FindGameObjectWithTag("GroundTile").GetComponent<Tilemap>();
             em = GameObject.FindObjectOfType<EnemyManager>();
-            UIConnector = GameObject.FindGameObjectWithTag("OpenBtn");
+            UIConnector = GameObject.FindGameObjectWithTag("OpenBtn").transform.parent.gameObject;
             closeButton = GameObject.FindGameObjectWithTag("CloseBtn").GetComponent<Button>();
             Button CloseButton = closeButton.GetComponent<Button>();
             CloseButton.onClick.AddListener(OpenInvenUI);
             invUI = GameObject.FindGameObjectWithTag("InventoryUI");
             invenBar = GameObject.FindGameObjectWithTag("InventoryBar");
             invenBarTr = invenBar.transform;
-            minX = 30f;
-            maxX = 210f;
+           
             if (!runOnce)
             {
-                UIConnector.transform.localPosition = new Vector3(210, 0, UIConnector.transform.localPosition.z);
+                //UIConnector.transform.localPosition = new Vector3(210, 0, UIConnector.transform.localPosition.z);
                 runOnce = true;
             }
         }
@@ -136,8 +141,6 @@ public class PlayerMove : MonoBehaviour
         if (comebackfromscene4 && SceneManager.GetActiveScene() == SceneManager.GetSceneByBuildIndex(1))
         {
             comebackfromscene4 = false;
-            minX = 3f;
-            maxX = 27f;
             Start();
         }
 
@@ -170,15 +173,18 @@ public class PlayerMove : MonoBehaviour
             OpenInvenUI();
         }
 
+
+
         //open or close inventory
         if (InvenUIopen)
         {
             Debug.Log("eg");
             if (!theOtherWay)
             {
-                if (UIConnector.transform.localPosition.x > minX)
+                Debug.Log(UITRANS.position.x);
+                if (UITRANS.anchoredPosition.x > minX)
                 {
-                    UIConnector.transform.Translate(-1, 0, 0);
+                    UITRANS.transform.Translate(-1, 0, 0);
                 }
                 else
                 {
@@ -188,7 +194,8 @@ public class PlayerMove : MonoBehaviour
             }
             else
             {
-                if (UIConnector.transform.localPosition.x < maxX)
+                Debug.Log($"{UIConnector.transform.localPosition.x}, {maxX}");
+                if (UITRANS.anchoredPosition.x < maxX)
                 {
                     UIConnector.transform.Translate(1, 0, 0);
                 }
@@ -599,5 +606,16 @@ public class PlayerMove : MonoBehaviour
             default:
                 break;
         }
+    }
+
+
+    public RectTransform getINVHAVE()
+    {
+        return UITRANS;
+    }
+
+    public void ResetPosition()
+    {
+        oldPosition = Vector2.zero;
     }
 }

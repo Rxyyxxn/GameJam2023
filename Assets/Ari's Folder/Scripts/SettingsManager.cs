@@ -52,7 +52,7 @@ public class SettingsManager : MonoBehaviour
     {
         SceneManager.LoadScene("Lobby");
         Time.timeScale = 1.0f;
-
+        PlayerMove.instance.ResetPosition();
 
     }
 

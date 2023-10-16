@@ -32,15 +32,12 @@ public class PlayerUI : MonoBehaviour
     void Update()
     {
         coins_Text.text = player.coins.ToString();
-<<<<<<< Updated upstream
         
     }
 
     public void OnSettingsButton()
     {
         SettingsManager.instance.gameObject.SetActive(true);
-=======
 
->>>>>>> Stashed changes
     }
 }

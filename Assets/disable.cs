@@ -8,8 +8,17 @@ public class disable : MonoBehaviour
     // Start is called before the first frame update
     private void Awake()
     {
-
         DontDestroyOnLoad(gameObject);
+
+        if(PlayerMove.instance!=null)
+        {
+
+            if (PlayerMove.instance.getINVHAVE() != null)
+            {
+
+                Destroy(gameObject);
+            }
+        }
     }
 
 }
