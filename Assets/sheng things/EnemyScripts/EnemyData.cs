@@ -20,6 +20,7 @@ public class EnemyData : MonoBehaviour
     public Slider slider;
 
     public GameObject playerGO;
+    [SerializeField] public Animator animator;
 
     float movetimer = 0.0f;
 
@@ -155,6 +156,7 @@ public class EnemyData : MonoBehaviour
                 {
                     currentSound.clip = enemyAtkSound;
                     currentSound.Play();
+                    animator.SetTrigger("IsAttack");
                     playerGO.GetComponent<PlayerMove>().HP -= EnemyAtk;
                     enemyState = EnemyState.AttackPause;
                 }

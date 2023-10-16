@@ -146,7 +146,7 @@ MonoBehaviour:
   nextPlayerTilePos: {x: 0, y: 0, z: 0}
   em: {fileID: 0}
   attakDmg: 1
-  HP: 10
+  HP: 100
   goldCount: 0
   currentSound: {fileID: 0}
   playerMove: {fileID: 8300000, guid: 7e888cce1f00eef499acb81f99dfc5b4, type: 3}
@@ -156,10 +156,12 @@ MonoBehaviour:
   dice: {fileID: 0}
   unactiveInvUI: 0
   closeButton: {fileID: 0}
+  UIConnector: {fileID: 0}
   shopGuide: {fileID: 0}
   questGuide: {fileID: 0}
   shopCanvas: {fileID: 0}
   questCanvas: {fileID: 0}
+  UITRANS: {fileID: 0}
 --- !u!70 &5769809675636775723
 CapsuleCollider2D:
   m_ObjectHideFlags: 0

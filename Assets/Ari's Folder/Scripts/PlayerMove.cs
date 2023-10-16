@@ -136,6 +136,13 @@ public class PlayerMove : MonoBehaviour
                 //UIConnector.transform.localPosition = new Vector3(210, 0, UIConnector.transform.localPosition.z);
                 runOnce = true;
             }
+            if (HP <= 0)
+			{
+                SceneManager.LoadScene("Lobby");
+                ResetPosition();
+                HP = 100;
+
+            }
         }
 
         if (comebackfromscene4 && SceneManager.GetActiveScene() == SceneManager.GetSceneByBuildIndex(1))

@@ -1794,7 +1794,7 @@ PrefabInstance:
     - target: {fileID: 4102261986635123916, guid: c6c24a0f756b8df46b8538435f869771,
         type: 3}
       propertyPath: description.Array.size
-      value: 3
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 4102261986635123916, guid: c6c24a0f756b8df46b8538435f869771,
         type: 3}
@@ -1827,7 +1827,17 @@ PrefabInstance:
     - target: {fileID: 4102261986635123916, guid: c6c24a0f756b8df46b8538435f869771,
         type: 3}
       propertyPath: description.Array.data[2]
-      value: 10 Face dice
+      value: 8 Face dice
+      objectReference: {fileID: 0}
+    - target: {fileID: 4102261986635123916, guid: c6c24a0f756b8df46b8538435f869771,
+        type: 3}
+      propertyPath: description.Array.data[3]
+      value: Variant 8 Face dice
+      objectReference: {fileID: 0}
+    - target: {fileID: 4102261986635123916, guid: c6c24a0f756b8df46b8538435f869771,
+        type: 3}
+      propertyPath: description.Array.data[4]
+      value: Variant 8 Face dice
       objectReference: {fileID: 0}
     - target: {fileID: 4181101807438070446, guid: c6c24a0f756b8df46b8538435f869771,
         type: 3}

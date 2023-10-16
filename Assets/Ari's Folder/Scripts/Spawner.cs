@@ -54,7 +54,7 @@ public class Spawner : MonoBehaviour
         for (int i = 0; i < spawnAmount; i++)
         {
             int randomPos = Random.Range(0, availablePlaces.Count - 1);
-            RandomSpawn(new Vector3(availablePlaces[randomPos].x, availablePlaces[randomPos].y + 0.5f));
+            RandomSpawn(new Vector3(availablePlaces[randomPos].x+0.5f, availablePlaces[randomPos].y + 0.25f));
         }
     }
 

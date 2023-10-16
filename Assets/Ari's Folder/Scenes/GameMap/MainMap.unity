@@ -1260,7 +1260,7 @@ MonoBehaviour:
     weight: 0
   tilemap: {fileID: 1993987385}
   availablePlaces: []
-  spawnAmount: 10
+  spawnAmount: 15
 --- !u!4 &1273950699
 Transform:
   m_ObjectHideFlags: 0

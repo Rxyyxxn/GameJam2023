@@ -450,6 +450,7 @@ MonoBehaviour:
   enemyVec3: {x: 0, y: 0, z: 0}
   slider: {fileID: 4820748737890644457}
   playerGO: {fileID: 0}
+  animator: {fileID: 5828035995118048562}
   em: {fileID: 0}
   attackPauseTimer: 0
   enemyAtkSound: {fileID: 8300000, guid: be8d3371603aaf948a305b5fc4c1d974, type: 3}
